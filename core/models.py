@@ -50,4 +50,41 @@ class Goal(Base):
     created_at = Column(DateTime, default=func.now())
     
     # Отношения
-    user = relationship("User", back_populates="goals") 
+    user = relationship("User", back_populates="goals")
+
+
+class Category(Base):
+    """Модель категории расходов/доходов"""
+    __tablename__ = "categories"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+    name = Column(String(100), nullable=False)
+    emoji = Column(String(10), default="💰")
+    is_expense = Column(Integer, default=1)  # 1 - расход, 0 - доход
+    created_at = Column(DateTime, default=func.now())
+
+    # Отношения
+    user = relationship("User")
+
+
+class Transaction(Base):
+    """Расширенная модель транзакции (доход/расход)"""
+    __tablename__ = "transactions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+    amount = Column(Float, nullable=False)
+    original_amount = Column(Float, nullable=True)
+    currency = Column(String(3), default="RUB")
+    category_id = Column(Integer, ForeignKey("categories.id"), nullable=True)
+    description = Column(Text, nullable=True)
+    transaction_date = Column(DateTime, default=func.now())
+    created_at = Column(DateTime, default=func.now())
+    is_expense = Column(Integer, default=1)  # 1 - расход, 0 - доход
+    receipt_path = Column(String(255), nullable=True)
+    mentioned_user = Column(String(100), nullable=True)  # Упомянутый пользователь (@username)
+
+    # Отношения
+    user = relationship("User")
+    category = relationship("Category") 

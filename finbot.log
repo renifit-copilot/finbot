@@ -83,3 +83,69 @@
 2025-06-24 22:45:17.930 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
 2025-06-24 22:45:22.751 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-06-24 22:45:24.456 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456660 is handled. Duration 4172 ms by bot id=8079867803
+2025-06-24 22:46:19.580 | INFO     | aiogram.dispatcher.dispatcher:start_polling:554 - Polling stopped
+2025-06-24 22:46:19.837 | INFO     | __main__:main:80 - Р‘РѕС‚ РѕСЃС‚Р°РЅРѕРІР»РµРЅ
+2025-06-24 22:46:19.837 | INFO     | aiogram.dispatcher.dispatcher:_polling:359 - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:46:19.839 | INFO     | logging:info:2216 - Р‘РѕС‚ РѕСЃС‚Р°РЅРѕРІР»РµРЅ РІСЂСѓС‡РЅСѓСЋ
+2025-06-24 23:37:06,675 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:37:06,675 - __main__ - INFO - Запуск бота...
+2025-06-24 23:37:07,035 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:37:07,115 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:38:03,118 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 23:38:03,474 - aiogram.event - INFO - Update id=92456661 is handled. Duration 1375 ms by bot id=8079867803
+2025-06-24 23:38:14,642 - aiogram.event - INFO - Update id=92456662 is handled. Duration 328 ms by bot id=8079867803
+2025-06-24 23:38:17,247 - aiogram.event - INFO - Update id=92456663 is handled. Duration 125 ms by bot id=8079867803
+2025-06-24 23:38:22,503 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-24 23:38:22,764 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:38:22,765 - __main__ - INFO - Бот остановлен
+2025-06-24 23:41:27,869 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:41:27,870 - __main__ - INFO - Запуск бота...
+2025-06-24 23:41:28,267 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:41:28,348 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:41:35,316 - aiogram.event - INFO - Update id=92456665 is handled. Duration 672 ms by bot id=8079867803
+2025-06-24 23:41:37,234 - aiogram.event - INFO - Update id=92456666 is handled. Duration 156 ms by bot id=8079867803
+2025-06-24 23:41:39,937 - aiogram.event - INFO - Update id=92456667 is handled. Duration 202 ms by bot id=8079867803
+2025-06-24 23:41:57,487 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-24 23:41:57,738 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:41:57,739 - __main__ - INFO - Бот остановлен
+2025-06-24 23:42:54,379 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:42:54,380 - __main__ - INFO - Запуск бота...
+2025-06-24 23:42:54,888 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:42:55,033 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:42:57,516 - aiogram.event - INFO - Update id=92456669 is handled. Duration 625 ms by bot id=8079867803
+2025-06-24 23:43:09,746 - aiogram.event - INFO - Update id=92456670 is handled. Duration 250 ms by bot id=8079867803
+2025-06-24 23:43:13,660 - aiogram.event - INFO - Update id=92456671 is handled. Duration 219 ms by bot id=8079867803
+2025-06-24 23:43:21,870 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 23:43:22,035 - aiogram.event - INFO - Update id=92456672 is handled. Duration 1156 ms by bot id=8079867803
+2025-06-24 23:43:34,811 - aiogram.event - INFO - Update id=92456673 is handled. Duration 250 ms by bot id=8079867803
+2025-06-24 23:43:46,674 - aiogram.event - INFO - Update id=92456674 is handled. Duration 281 ms by bot id=8079867803
+2025-06-24 23:43:59,088 - aiogram.event - INFO - Update id=92456675 is handled. Duration 125 ms by bot id=8079867803
+2025-06-24 23:44:14,277 - aiogram.event - INFO - Update id=92456676 is not handled. Duration 0 ms by bot id=8079867803
+2025-06-24 23:44:36,362 - aiogram.event - INFO - Update id=92456677 is handled. Duration 1563 ms by bot id=8079867803
+2025-06-24 23:44:45,946 - root - INFO - Создан новый пользователь: 7572158393
+2025-06-24 23:44:46,130 - aiogram.event - INFO - Update id=92456678 is handled. Duration 188 ms by bot id=8079867803
+2025-06-24 23:44:48,311 - aiogram.event - INFO - Update id=92456679 is handled. Duration 109 ms by bot id=8079867803
+2025-06-24 23:45:07,837 - aiogram.event - INFO - Update id=92456680 is not handled. Duration 0 ms by bot id=8079867803
+2025-06-24 23:45:16,757 - aiogram.event - INFO - Update id=92456681 is handled. Duration 453 ms by bot id=8079867803
+2025-06-24 23:45:20,936 - aiogram.event - INFO - Update id=92456682 is handled. Duration 234 ms by bot id=8079867803
+2025-06-24 23:45:31,483 - aiogram.event - INFO - Update id=92456683 is handled. Duration 203 ms by bot id=8079867803
+2025-06-24 23:45:39,160 - aiogram.event - INFO - Update id=92456684 is handled. Duration 281 ms by bot id=8079867803
+2025-06-24 23:45:42,417 - aiogram.event - INFO - Update id=92456685 is handled. Duration 141 ms by bot id=8079867803
+2025-06-24 23:45:53,573 - aiogram.event - INFO - Update id=92456686 is handled. Duration 218 ms by bot id=8079867803
+2025-06-24 23:45:57,740 - aiogram.event - INFO - Update id=92456687 is handled. Duration 125 ms by bot id=8079867803
+2025-06-24 23:46:06,288 - aiogram.event - INFO - Update id=92456688 is handled. Duration 281 ms by bot id=8079867803
+2025-06-24 23:46:11,683 - aiogram.event - INFO - Update id=92456689 is handled. Duration 156 ms by bot id=8079867803
+2025-06-24 23:46:22,259 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-24 23:46:22,527 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:46:22,528 - __main__ - INFO - Бот остановлен
+2025-06-24 23:56:34,981 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:56:34,981 - __main__ - INFO - Запуск бота...
+2025-06-24 23:56:35,543 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:56:35,679 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:56:45,556 - aiogram.event - INFO - Update id=92456690 is handled. Duration 359 ms by bot id=8079867803
+2025-06-24 23:56:55,904 - aiogram.event - INFO - Update id=92456691 is handled. Duration 139 ms by bot id=8079867803
+2025-06-24 23:56:58,983 - aiogram.event - INFO - Update id=92456692 is handled. Duration 125 ms by bot id=8079867803
+2025-06-24 23:57:08,802 - aiogram.event - INFO - Update id=92456693 is handled. Duration 281 ms by bot id=8079867803
+2025-06-24 23:57:19,204 - aiogram.event - INFO - Update id=92456694 is handled. Duration 109 ms by bot id=8079867803
+2025-06-24 23:57:27,485 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 23:57:27,610 - aiogram.event - INFO - Update id=92456695 is handled. Duration 2172 ms by bot id=8079867803

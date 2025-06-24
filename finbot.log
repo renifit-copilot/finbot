@@ -52,3 +52,34 @@
 2025-06-24 22:34:24.211 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456653 is handled. Duration 796 ms by bot id=8079867803
 2025-06-24 22:34:32.220 | INFO     | logging:info:2216 - Найдены сумма 9.99 руб. и категория 'другое'
 2025-06-24 22:34:32.427 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456654 is handled. Duration 1234 ms by bot id=8079867803
+2025-06-24 22:38:10.024 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456655 is not handled. Duration 0 ms by bot id=8079867803
+2025-06-24 22:38:15.800 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:38:16.497 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456656 is handled. Duration 1656 ms by bot id=8079867803
+2025-06-24 22:40:56.223 | INFO     | aiogram.dispatcher.dispatcher:start_polling:554 - Polling stopped
+2025-06-24 22:40:56.477 | INFO     | __main__:main:80 - Бот остановлен
+2025-06-24 22:40:56.477 | INFO     | aiogram.dispatcher.dispatcher:_polling:359 - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:40:56.477 | INFO     | logging:info:2216 - Бот остановлен вручную
+2025-06-24 22:41:00.936 | INFO     | __main__:main:53 - Запуск FinBot...
+2025-06-24 22:41:00.938 | INFO     | logging:info:2216 - БД инициализирована успешно
+2025-06-24 22:41:00.938 | INFO     | __main__:main:58 - База данных инициализирована
+2025-06-24 22:41:01.159 | INFO     | __main__:main:71 - Запускаем long polling...
+2025-06-24 22:41:01.161 | INFO     | aiogram.dispatcher.dispatcher:start_polling:527 - Start polling
+2025-06-24 22:41:01.576 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:41:04.251 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:41:04.771 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456657 is handled. Duration 1436 ms by bot id=8079867803
+2025-06-24 22:41:33.112 | INFO     | logging:info:2216 - Найдены сумма 1.42 руб. и категория 'другое'
+2025-06-24 22:41:33.437 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456658 is handled. Duration 1656 ms by bot id=8079867803
+2025-06-24 22:41:53.950 | INFO     | logging:info:2216 - Найдены сумма 94.0 руб. и категория 'другое'
+2025-06-24 22:41:54.342 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456659 is handled. Duration 2375 ms by bot id=8079867803
+2025-06-24 22:44:41.407 | INFO     | aiogram.dispatcher.dispatcher:start_polling:554 - Polling stopped
+2025-06-24 22:44:41.659 | INFO     | __main__:main:80 - Бот остановлен
+2025-06-24 22:44:41.659 | INFO     | aiogram.dispatcher.dispatcher:_polling:359 - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:44:41.662 | INFO     | logging:info:2216 - Бот остановлен вручную
+2025-06-24 22:45:17.259 | INFO     | __main__:main:53 - Запуск FinBot...
+2025-06-24 22:45:17.261 | INFO     | logging:info:2216 - БД инициализирована успешно
+2025-06-24 22:45:17.262 | INFO     | __main__:main:58 - База данных инициализирована
+2025-06-24 22:45:17.481 | INFO     | __main__:main:71 - Запускаем long polling...
+2025-06-24 22:45:17.482 | INFO     | aiogram.dispatcher.dispatcher:start_polling:527 - Start polling
+2025-06-24 22:45:17.930 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:45:22.751 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:45:24.456 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456660 is handled. Duration 4172 ms by bot id=8079867803

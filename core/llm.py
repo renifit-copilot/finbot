@@ -1,4 +1,5 @@
-import groq
+from openai import OpenAI
+import os
 import logging
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
@@ -7,8 +8,11 @@ from sqlalchemy.orm import Session
 from core.models import User, Expense
 
 
-# Инициализация клиента Groq
-client = groq.Client(api_key=settings.GROQ_API_KEY)
+# Инициализация клиента OpenAI с настройками для Groq API
+client = OpenAI(
+    api_key=settings.GROQ_API_KEY,
+    base_url="https://api.groq.com/openai/v1"
+)
 
 
 def ask_groq(messages: List[Dict[str, str]]) -> str:

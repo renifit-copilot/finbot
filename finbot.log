@@ -1,0 +1,54 @@
+2025-06-24 22:29:20.334 | INFO     | __main__:main:53 - Запуск FinBot...
+2025-06-24 22:29:20.366 | INFO     | logging:info:2216 - БД инициализирована успешно
+2025-06-24 22:29:20.366 | INFO     | __main__:main:58 - База данных инициализирована
+2025-06-24 22:29:20.593 | INFO     | __main__:main:71 - Запускаем long polling...
+2025-06-24 22:29:20.595 | INFO     | aiogram.dispatcher.dispatcher:start_polling:527 - Start polling
+2025-06-24 22:29:24.199 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:29:34.730 | INFO     | logging:info:2216 - Создан новый пользователь: 876486659
+2025-06-24 22:29:35.199 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456640 is handled. Duration 484 ms by bot id=8079867803
+2025-06-24 22:29:43.500 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456641 is not handled. Duration 0 ms by bot id=8079867803
+2025-06-24 22:29:49.012 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456642 is handled. Duration 218 ms by bot id=8079867803
+2025-06-24 22:29:58.314 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456643 is handled. Duration 218 ms by bot id=8079867803
+2025-06-24 22:30:08.005 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456644 is not handled. Duration 0 ms by bot id=8079867803
+2025-06-24 22:30:18.266 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456645 is handled. Duration 438 ms by bot id=8079867803
+2025-06-24 22:30:24.117 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:30:24.254 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456646 is handled. Duration 938 ms by bot id=8079867803
+2025-06-24 22:31:01.317 | ERROR    | logging:error:2183 - Ошибка при обработке чека: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/rus.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'rus\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+2025-06-24 22:31:01.714 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456647 is handled. Duration 1625 ms by bot id=8079867803
+2025-06-24 22:31:17.920 | ERROR    | logging:error:2183 - Ошибка при обработке чека: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/rus.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'rus\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+2025-06-24 22:31:18.227 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456648 is handled. Duration 1078 ms by bot id=8079867803
+2025-06-24 22:32:02.711 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:32:02.992 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456649 is handled. Duration 1094 ms by bot id=8079867803
+2025-06-24 22:32:21.025 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456650 is handled. Duration 468 ms by bot id=8079867803
+2025-06-24 22:32:25.443 | INFO     | httpx._client:_send_single_request:1013 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 22:32:25.725 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456651 is handled. Duration 1765 ms by bot id=8079867803
+2025-06-24 22:33:25.696 | INFO     | __main__:main:53 - Запуск FinBot...
+2025-06-24 22:33:25.696 | INFO     | logging:info:2216 - БД инициализирована успешно
+2025-06-24 22:33:25.696 | INFO     | __main__:main:58 - База данных инициализирована
+2025-06-24 22:33:25.920 | INFO     | __main__:main:71 - Запускаем long polling...
+2025-06-24 22:33:25.921 | INFO     | aiogram.dispatcher.dispatcher:start_polling:527 - Start polling
+2025-06-24 22:33:26.359 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:33:26.615 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 22:33:26.616 | WARNING  | aiogram.dispatcher.dispatcher:_listen_updates:221 - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-24 22:33:28.896 | INFO     | aiogram.dispatcher.dispatcher:start_polling:554 - Polling stopped
+2025-06-24 22:33:29.154 | INFO     | __main__:main:80 - Бот остановлен
+2025-06-24 22:33:29.157 | INFO     | aiogram.dispatcher.dispatcher:_polling:359 - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:33:29.157 | INFO     | logging:info:2216 - Бот остановлен вручную
+2025-06-24 22:33:30.781 | ERROR    | aiogram.dispatcher.dispatcher:_listen_updates:219 - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 22:33:30.782 | WARNING  | aiogram.dispatcher.dispatcher:_listen_updates:221 - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-24 22:33:32.464 | INFO     | aiogram.dispatcher.dispatcher:start_polling:554 - Polling stopped
+2025-06-24 22:33:32.714 | INFO     | __main__:main:80 - Бот остановлен
+2025-06-24 22:33:32.715 | INFO     | aiogram.dispatcher.dispatcher:_polling:359 - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:33:32.717 | INFO     | logging:info:2216 - Бот остановлен вручную
+2025-06-24 22:33:43.716 | INFO     | __main__:main:53 - Запуск FinBot...
+2025-06-24 22:33:43.718 | INFO     | logging:info:2216 - БД инициализирована успешно
+2025-06-24 22:33:43.718 | INFO     | __main__:main:58 - База данных инициализирована
+2025-06-24 22:33:43.962 | INFO     | __main__:main:71 - Запускаем long polling...
+2025-06-24 22:33:43.963 | INFO     | aiogram.dispatcher.dispatcher:start_polling:527 - Start polling
+2025-06-24 22:33:44.385 | INFO     | aiogram.dispatcher.dispatcher:_polling:341 - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 22:34:08.893 | INFO     | logging:info:2216 - Найдены сумма 1.42 руб. и категория 'другое'
+2025-06-24 22:34:09.161 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456652 is handled. Duration 3469 ms by bot id=8079867803
+2025-06-24 22:34:23.947 | INFO     | logging:info:2216 - Найдены сумма 0.0 руб. и категория 'другое'
+2025-06-24 22:34:24.211 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456653 is handled. Duration 796 ms by bot id=8079867803
+2025-06-24 22:34:32.220 | INFO     | logging:info:2216 - Найдены сумма 9.99 руб. и категория 'другое'
+2025-06-24 22:34:32.427 | INFO     | aiogram.dispatcher.dispatcher:feed_update:172 - Update id=92456654 is handled. Duration 1234 ms by bot id=8079867803

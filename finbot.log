@@ -149,3 +149,123 @@
 2025-06-24 23:57:19,204 - aiogram.event - INFO - Update id=92456694 is handled. Duration 109 ms by bot id=8079867803
 2025-06-24 23:57:27,485 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-06-24 23:57:27,610 - aiogram.event - INFO - Update id=92456695 is handled. Duration 2172 ms by bot id=8079867803
+2025-06-24 23:58:55,571 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-24 23:58:55,842 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:58:55,842 - __main__ - INFO - Бот остановлен
+2025-06-24 23:59:00,444 - root - INFO - БД инициализирована успешно
+2025-06-24 23:59:00,444 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:59:00,444 - __main__ - INFO - Запуск бота...
+2025-06-24 23:59:00,767 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:59:00,900 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:59:02,253 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-24 23:59:02,886 - aiogram.event - INFO - Update id=92456696 is handled. Duration 1703 ms by bot id=8079867803
+2025-06-24 23:59:19,837 - root - INFO - БД инициализирована успешно
+2025-06-24 23:59:19,837 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:59:19,837 - __main__ - INFO - Запуск бота...
+2025-06-24 23:59:20,924 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:59:21,068 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:59:21,213 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 23:59:21,213 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-24 23:59:22,446 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8079867803)
+2025-06-24 23:59:22,914 - aiogram.event - INFO - Update id=92456697 is handled. Duration 469 ms by bot id=8079867803
+2025-06-24 23:59:25,683 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 23:59:25,684 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-24 23:59:26,772 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 23:59:26,772 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-24 23:59:30,889 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 23:59:30,889 - aiogram.dispatcher - WARNING - Sleep for 1.455743 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-24 23:59:32,492 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-24 23:59:32,496 - aiogram.dispatcher - WARNING - Sleep for 1.281364 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-24 23:59:34,904 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-24 23:59:35,158 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-24 23:59:35,158 - __main__ - INFO - Бот остановлен
+2025-06-24 23:59:55,344 - root - INFO - БД инициализирована успешно
+2025-06-24 23:59:55,344 - __main__ - INFO - База данных инициализирована
+2025-06-24 23:59:55,346 - __main__ - INFO - Запуск бота...
+2025-06-24 23:59:55,690 - aiogram.dispatcher - INFO - Start polling
+2025-06-24 23:59:55,773 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:00:09,461 - aiogram.event - INFO - Update id=92456698 is handled. Duration 921 ms by bot id=8079867803
+2025-06-25 00:00:23,476 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-25 00:00:23,735 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:00:23,735 - __main__ - INFO - Бот остановлен
+2025-06-25 00:05:21,912 - root - INFO - БД инициализирована успешно
+2025-06-25 00:05:21,912 - __main__ - INFO - База данных инициализирована
+2025-06-25 00:05:21,913 - __main__ - INFO - Запуск бота...
+2025-06-25 00:05:22,494 - aiogram.dispatcher - INFO - Start polling
+2025-06-25 00:05:22,686 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:05:25,555 - root - INFO - БД инициализирована успешно
+2025-06-25 00:05:25,555 - __main__ - INFO - База данных инициализирована
+2025-06-25 00:05:25,556 - __main__ - INFO - Запуск бота...
+2025-06-25 00:05:25,829 - aiogram.dispatcher - INFO - Start polling
+2025-06-25 00:05:25,921 - aiogram.dispatcher - INFO - Run polling for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:05:26,015 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:26,016 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-25 00:05:30,117 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:30,117 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-25 00:05:31,198 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:31,198 - aiogram.dispatcher - WARNING - Sleep for 1.372673 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-25 00:05:35,653 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:35,653 - aiogram.dispatcher - WARNING - Sleep for 1.326138 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-25 00:05:37,085 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:37,086 - aiogram.dispatcher - WARNING - Sleep for 1.850140 seconds and try again... (tryings = 2, bot id = 8079867803)
+2025-06-25 00:05:37,351 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8079867803)
+2025-06-25 00:05:37,690 - aiogram.event - INFO - Update id=92456699 is handled. Duration 327 ms by bot id=8079867803
+2025-06-25 00:05:42,057 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:42,060 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-25 00:05:43,150 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:43,151 - aiogram.dispatcher - WARNING - Sleep for 2.325028 seconds and try again... (tryings = 3, bot id = 8079867803)
+2025-06-25 00:05:48,321 - aiogram.dispatcher - INFO - Connection established (tryings = 4, bot id = 8079867803)
+2025-06-25 00:05:48,581 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:48,581 - aiogram.dispatcher - WARNING - Sleep for 1.233991 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-25 00:05:48,804 - aiogram.event - INFO - Update id=92456700 is handled. Duration 483 ms by bot id=8079867803
+2025-06-25 00:05:49,907 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:49,908 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8079867803)
+2025-06-25 00:05:53,992 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:53,993 - aiogram.dispatcher - WARNING - Sleep for 1.466732 seconds and try again... (tryings = 2, bot id = 8079867803)
+2025-06-25 00:05:55,542 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-25 00:05:55,543 - aiogram.dispatcher - WARNING - Sleep for 1.259278 seconds and try again... (tryings = 1, bot id = 8079867803)
+2025-06-25 00:05:55,565 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 8079867803)
+2025-06-25 00:05:55,936 - aiogram.event - INFO - Update id=92456701 is handled. Duration 358 ms by bot id=8079867803
+2025-06-25 00:05:58,400 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-25 00:05:58,669 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:05:58,672 - __main__ - INFO - Бот остановлен
+2025-06-25 00:06:03,989 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8079867803)
+2025-06-25 00:06:04,281 - aiogram.event - INFO - Update id=92456702 is handled. Duration 280 ms by bot id=8079867803
+2025-06-25 00:06:08,086 - aiogram.event - INFO - Update id=92456703 is handled. Duration 110 ms by bot id=8079867803
+2025-06-25 00:06:16,424 - aiogram.event - INFO - Update id=92456704 is handled. Duration 139 ms by bot id=8079867803
+2025-06-25 00:06:28,633 - aiogram.event - INFO - Update id=92456705 is handled. Duration 140 ms by bot id=8079867803
+2025-06-25 00:06:47,388 - aiogram.event - INFO - Update id=92456706 is handled. Duration 500 ms by bot id=8079867803
+2025-06-25 00:06:55,645 - aiogram.event - INFO - Update id=92456707 is handled. Duration 125 ms by bot id=8079867803
+2025-06-25 00:07:01,658 - aiogram.event - INFO - Update id=92456708 is handled. Duration 109 ms by bot id=8079867803
+2025-06-25 00:07:07,334 - aiogram.event - INFO - Update id=92456709 is handled. Duration 140 ms by bot id=8079867803
+2025-06-25 00:07:12,037 - aiogram.event - INFO - Update id=92456710 is handled. Duration 468 ms by bot id=8079867803
+2025-06-25 00:07:25,739 - aiogram.event - INFO - Update id=92456711 is handled. Duration 109 ms by bot id=8079867803
+2025-06-25 00:07:32,636 - aiogram.event - INFO - Update id=92456712 is handled. Duration 171 ms by bot id=8079867803
+2025-06-25 00:07:36,158 - aiogram.event - INFO - Update id=92456713 is handled. Duration 125 ms by bot id=8079867803
+2025-06-25 00:07:45,251 - aiogram.event - INFO - Update id=92456714 is handled. Duration 109 ms by bot id=8079867803
+2025-06-25 00:07:50,076 - aiogram.event - INFO - Update id=92456715 is handled. Duration 94 ms by bot id=8079867803
+2025-06-25 00:08:20,806 - aiogram.event - INFO - Update id=92456716 is handled. Duration 342 ms by bot id=8079867803
+2025-06-25 00:08:24,772 - aiogram.event - INFO - Update id=92456717 is handled. Duration 109 ms by bot id=8079867803
+2025-06-25 00:08:39,153 - aiogram.event - INFO - Update id=92456718 is handled. Duration 139 ms by bot id=8079867803
+2025-06-25 00:08:41,615 - aiogram.event - INFO - Update id=92456719 is handled. Duration 109 ms by bot id=8079867803
+2025-06-25 00:08:45,629 - aiogram.event - INFO - Update id=92456720 is handled. Duration 110 ms by bot id=8079867803
+2025-06-25 00:08:53,789 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-25 00:08:53,927 - aiogram.event - INFO - Update id=92456721 is handled. Duration 1250 ms by bot id=8079867803
+2025-06-25 00:09:22,485 - aiogram.event - INFO - Update id=92456722 is handled. Duration 375 ms by bot id=8079867803
+2025-06-25 00:09:26,607 - aiogram.event - INFO - Update id=92456723 is handled. Duration 139 ms by bot id=8079867803
+2025-06-25 00:09:36,013 - aiogram.event - INFO - Update id=92456724 is handled. Duration 125 ms by bot id=8079867803
+2025-06-25 00:10:02,659 - aiogram.event - INFO - Update id=92456725 is not handled. Duration 15 ms by bot id=8079867803
+2025-06-25 00:10:09,245 - aiogram.event - INFO - Update id=92456726 is handled. Duration 530 ms by bot id=8079867803
+2025-06-25 00:10:25,594 - aiogram.event - INFO - Update id=92456727 is handled. Duration 453 ms by bot id=8079867803
+2025-06-25 00:10:36,997 - aiogram.event - INFO - Update id=92456728 is handled. Duration 171 ms by bot id=8079867803
+2025-06-25 00:11:17,704 - aiogram.event - INFO - Update id=92456729 is handled. Duration 344 ms by bot id=8079867803
+2025-06-25 00:11:22,890 - aiogram.event - INFO - Update id=92456730 is handled. Duration 110 ms by bot id=8079867803
+2025-06-25 00:12:03,575 - root - INFO - Найдены сумма 0.0 руб. и категория 'другое'
+2025-06-25 00:12:03,898 - aiogram.event - INFO - Update id=92456731 is handled. Duration 1155 ms by bot id=8079867803
+2025-06-25 00:12:32,559 - root - INFO - Найдены сумма 94.0 руб. и категория 'другое'
+2025-06-25 00:12:32,780 - aiogram.event - INFO - Update id=92456732 is handled. Duration 1046 ms by bot id=8079867803
+2025-06-25 00:12:46,189 - aiogram.event - INFO - Update id=92456733 is handled. Duration 250 ms by bot id=8079867803
+2025-06-25 00:12:55,715 - aiogram.event - INFO - Update id=92456734 is handled. Duration 110 ms by bot id=8079867803
+2025-06-25 00:13:03,206 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-25 00:13:03,471 - aiogram.dispatcher - INFO - Polling stopped for bot @financefinbot id=8079867803 - 'finbot'
+2025-06-25 00:13:03,472 - __main__ - INFO - Бот остановлен

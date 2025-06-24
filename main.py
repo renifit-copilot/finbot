@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 import os
 from bot.commands import router as commands_router
 from bot.expense import router as expense_router
-from core.db import Base, engine
-from core.models import User, Expense, Goal
+from core.db import init_db
+from core.models import User, Expense, Goal, Category, Transaction
 
 
 # Настройка логирования
@@ -46,7 +46,7 @@ async def main():
     dp.include_router(expense_router)
     
     # Создаем таблицы в БД, если их нет
-    Base.metadata.create_all(engine)
+    init_db()
     logger.info("База данных инициализирована")
     
     # Запускаем бота

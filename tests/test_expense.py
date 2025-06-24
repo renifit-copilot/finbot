@@ -228,17 +228,17 @@ class TestCategorization:
         """Тест подбора эмодзи для категорий"""
         # Проверяем прямые совпадения
         assert get_category_emoji("продукты") == "🛒"
-        assert get_category_emoji("кафе") == "🍔"
+        assert get_category_emoji("кафе") == "☕"
         assert get_category_emoji("транспорт") == "🚗"
         
         # Проверяем частичные совпадения
         assert get_category_emoji("на продукты") == "🛒"
-        assert get_category_emoji("обед в кафе") == "🍔"
+        assert get_category_emoji("обед в кафе") == "☕"
         assert get_category_emoji("расходы на транспорт") == "🚗"
         
         # Проверяем категории, которых нет в списке
-        assert get_category_emoji("что-то другое") == "💰"
-        assert get_category_emoji("") == "💰"
+        assert get_category_emoji("что-то другое") == "📋"
+        assert get_category_emoji("") == "📋"
     
     def test_amount_formatting(self):
         """Тест форматирования сумм в стиле Cointry"""

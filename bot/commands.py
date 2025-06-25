@@ -1,13 +1,18 @@
-from aiogram import Router, types
+from aiogram import Router, types, F
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from aiogram.enums import ParseMode
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 import logging
-from core.models import User, Expense
+from core.models import User, Expense, Transaction, Category
 from core.db import SessionLocal
 from core.llm import get_advice
+from sqlalchemy import func, desc, and_, extract
+import calendar
+from collections import defaultdict
+from aiogram.utils.markdown import code
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 # Создаем роутер для команд
@@ -20,6 +25,7 @@ async def cmd_start(message: Message):
     Обрабатывает команду /start:
     - Приветствует пользователя
     - Создает запись в БД, если пользователь новый
+    - Предоставляет полную справку по использованию бота
     """
     user_id = message.from_user.id
     username = message.from_user.username
@@ -44,22 +50,30 @@ async def cmd_start(message: Message):
             db.commit()
             logging.info(f"Создан новый пользователь: {user_id}")
         
-        # Отправляем приветственное сообщение
+        # Отправляем приветственное сообщение с полной справкой
         await message.answer(
-            f"👋 Привет, {first_name or username or 'друг'}!\n\n"
+            f"👋 <b>Привет, {first_name or username or 'друг'}!</b>\n\n"
             f"Я твой персональный финансовый бот. Помогу тебе отслеживать расходы и экономить деньги.\n\n"
-            f"📝 <b>Как добавить трату:</b>\n"
-            f"• Напиши сумму и категорию, например: <i>-500 кофе</i>\n"
-            f"• Отправь фото чека, и я распознаю сумму\n\n"
-            f"📊 <b>Команды:</b>\n"
-            f"• /help — справка по боту\n"
-            f"• /summary — сводка по тратам\n"
-            f"• /stats — подробная статистика\n"
-            f"• /list — история транзакций\n"
-            f"• /delete — удалить последнюю запись\n"
-            f"• /categories — список категорий\n"
-            f"• /open — полная справка\n\n"
-            f"Давай начнем учет финансов вместе!",
+            f"<b>💰 КАК ДОБАВИТЬ ТРАНЗАКЦИЮ:</b>\n\n"
+            f"<code>500 кофе</code> — добавить расход\n"
+            f"<code>+5000 зарплата</code> — добавить доход\n"
+            f"<code>100 USD книги</code> — указать другую валюту\n\n"
+            f"<i>Дополнительные возможности:</i>\n"
+            f"• Дата: <code>500 обед вчера</code>\n"
+            f"• Для другого пользователя: <code>1500 подарок @username</code>\n"
+            f"• Фото чека — автоматическое распознавание\n\n"
+            f"<b>📊 ОСНОВНЫЕ КОМАНДЫ:</b>\n\n"
+            f"/summary — краткая сводка по расходам\n"
+            f"/stats — подробная статистика по категориям\n"
+            f"/list — история последних транзакций\n"
+            f"/delete — удалить последнюю запись\n"
+            f"/categories — список доступных категорий\n\n"
+            f"<b>ℹ️ ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ:</b>\n\n"
+            f"<blockquote>12000 куртка замшевая</blockquote>\n"
+            f"<blockquote>+100000 зарплата</blockquote>\n"
+            f"<blockquote>1600 USD покупки в интернете</blockquote>\n"
+            f"<blockquote>4000 ресторан 26.12.2024</blockquote>\n\n"
+            f"Все данные хранятся локально и доступны только вам.",
             parse_mode=ParseMode.HTML
         )
     except Exception as e:
@@ -69,32 +83,11 @@ async def cmd_start(message: Message):
         db.close()
 
 
+# Создаем алиас для команды /help, чтобы она вызывала тот же обработчик, что и /start
 @router.message(Command("help"))
 async def cmd_help(message: Message):
-    """Обрабатывает команду /help"""
-    await message.answer(
-        "📝 <b>Справка по использованию бота:</b>\n\n"
-        "🧮 <b>Добавление расходов и доходов:</b>\n"
-        "• <i>СУММА КАТЕГОРИЯ</i> — добавить трату\n"
-        "   Например: <i>500 кофе</i> или <i>2500 продукты</i>\n"
-        "• <i>+СУММА КАТЕГОРИЯ</i> — добавить доход\n"
-        "   Например: <i>+50000 зарплата</i>\n"
-        "• <i>СУММА ВАЛЮТА КАТЕГОРИЯ</i> — указать валюту\n"
-        "   Например: <i>100 USD книги</i>\n"
-        "• Можно указать дату: <i>500 обед вчера</i>\n"
-        "• Можно упомянуть человека: <i>1500 подарок @username</i>\n"
-        "• Отправьте фото чека для автоматического распознавания\n\n"
-        "📊 <b>Команды:</b>\n"
-        "• /summary — краткая сводка по расходам\n"
-        "• /stats — подробная статистика по категориям\n"
-        "• /list — список последних транзакций\n"
-        "• /delete — удалить последнюю запись\n"
-        "• /categories — список доступных категорий\n"
-        "• /open — полная справка в стиле Cointry\n"
-        "• /start — перезапустить бота\n\n"
-        "Все данные хранятся локально и доступны только вам.",
-        parse_mode=ParseMode.HTML
-    )
+    """Алиас для команды /start"""
+    await cmd_start(message)
 
 
 @router.message(Command("summary"))
@@ -102,7 +95,9 @@ async def cmd_summary(message: Message):
     """
     Обрабатывает команду /summary:
     - Показывает сводку по расходам за день, неделю и месяц
-    - Добавляет совет по финансам
+    - Добавляет визуализацию прогресса по бюджету
+    - Показывает тенденцию расходов (рост/снижение)
+    - Добавляет персонализированный совет по финансам
     """
     user_id = message.from_user.id
     
@@ -119,10 +114,12 @@ async def cmd_summary(message: Message):
         # Получаем текущую дату и время
         now = datetime.now()
         today_start = datetime(now.year, now.month, now.day)
+        yesterday_start = today_start - timedelta(days=1)
         week_start = today_start - timedelta(days=now.weekday())
+        prev_week_start = week_start - timedelta(days=7)
         month_start = datetime(now.year, now.month, 1)
         
-        # Запрашиваем расходы за разные периоды
+        # Запрашиваем расходы за текущие периоды
         day_expenses = db.query(Expense).filter(
             Expense.user_id == user.id,
             Expense.created_at >= today_start
@@ -138,26 +135,78 @@ async def cmd_summary(message: Message):
             Expense.created_at >= month_start
         ).all()
         
+        # Запрашиваем расходы за предыдущие периоды для сравнения
+        yesterday_expenses = db.query(Expense).filter(
+            Expense.user_id == user.id,
+            Expense.created_at >= yesterday_start,
+            Expense.created_at < today_start
+        ).all()
+        
+        prev_week_expenses = db.query(Expense).filter(
+            Expense.user_id == user.id,
+            Expense.created_at >= prev_week_start,
+            Expense.created_at < week_start
+        ).all()
+        
         # Считаем суммы расходов
         day_sum = sum(expense.amount for expense in day_expenses)
+        yesterday_sum = sum(expense.amount for expense in yesterday_expenses)
         week_sum = sum(expense.amount for expense in week_expenses)
+        prev_week_sum = sum(expense.amount for expense in prev_week_expenses)
         month_sum = sum(expense.amount for expense in month_expenses)
+        
+        # Рассчитываем средние значения
+        days_in_month = calendar.monthrange(now.year, now.month)[1]
+        days_passed = now.day
+        
+        # Прогнозируем расходы на месяц, если прошло хотя бы 3 дня
+        monthly_forecast = 0
+        if days_passed >= 3:
+            daily_avg = month_sum / days_passed
+            monthly_forecast = daily_avg * days_in_month
+        
+        # Определяем тенденции (рост/снижение)
+        day_trend = "➡️" # нейтральный тренд по умолчанию
+        if yesterday_sum > 0:
+            day_trend = "📉" if day_sum < yesterday_sum else "📈" if day_sum > yesterday_sum else "➡️"
+            
+        week_trend = "➡️"
+        if prev_week_sum > 0:
+            week_trend = "📉" if week_sum < prev_week_sum else "📈" if week_sum > prev_week_sum else "➡️"
+        
+        # Создаем визуальный прогресс по месячному бюджету
+        # Предположим, что месячный бюджет - это прогноз или 2x от текущих расходов, если прогноза нет
+        monthly_budget = monthly_forecast if monthly_forecast > 0 else month_sum * 2
+        if monthly_budget == 0:  # Если нет расходов, установим минимальный бюджет
+            monthly_budget = 10000
+            
+        progress_percent = min(100, int((month_sum / monthly_budget) * 100))
+        
+        # Создаем визуальный индикатор прогресса
+        progress_bar_length = 10
+        filled_blocks = int((progress_percent / 100) * progress_bar_length)
+        progress_bar = "█" * filled_blocks + "▒" * (progress_bar_length - filled_blocks)
         
         # Получаем совет от LLM
         advice = get_advice(user_id, db)
         
-        # Форматируем суммы в стиле Cointry
-        day_formatted = f"`{day_sum:.2f}`"
-        week_formatted = f"`{week_sum:.2f}`"
-        month_formatted = f"`{month_sum:.2f}`"
+        # Форматируем суммы
+        day_formatted = f"{day_sum:.2f}"
+        week_formatted = f"{week_sum:.2f}"
+        month_formatted = f"{month_sum:.2f}"
+        forecast_formatted = f"{monthly_forecast:.2f}" if monthly_forecast > 0 else "N/A"
         
-        # Формируем сообщение в стиле Cointry
+        # Формируем сообщение
         await message.answer(
-            f"📊 <b>Сводка по расходам:</b>\n\n"
-            f"Сегодня: {day_formatted} ₽\n"
-            f"Неделя: {week_formatted} ₽\n"
-            f"Месяц: {month_formatted} ₽\n\n"
-            f"💡 <i>{advice}</i>",
+            f"📊 <b>ФИНАНСОВАЯ СВОДКА</b>\n\n"
+            f"<b>Сегодня:</b> {day_trend} <code>{day_formatted}</code> ₽\n"
+            f"<b>Неделя:</b> {week_trend} <code>{week_formatted}</code> ₽\n"
+            f"<b>Месяц:</b> <code>{month_formatted}</code> ₽\n\n"
+            f"<b>Прогресс по бюджету:</b> {progress_percent}%\n"
+            f"<code>{progress_bar}</code>\n\n"
+            f"<b>Прогноз на месяц:</b> <code>{forecast_formatted}</code> ₽\n\n"
+            f"💡 <i>{advice}</i>\n\n"
+            f"<i>Используйте /stats для подробной статистики</i>",
             parse_mode=ParseMode.HTML
         )
     except Exception as e:
@@ -165,13 +214,6 @@ async def cmd_summary(message: Message):
         await message.answer("Произошла ошибка при формировании отчета. Попробуйте позже.")
     finally:
         db.close()
-
-# === NEW CODE ===
-from sqlalchemy import func, desc, and_, extract
-import calendar
-from collections import defaultdict
-from aiogram.utils.markdown import code
-from core.models import Transaction, Category
 
 
 def format_amount_markdown(amount: float, currency: str = "₽") -> str:
@@ -184,7 +226,9 @@ async def cmd_stats(message: Message):
     """
     Обрабатывает команду /stats или /statistics:
     - Показывает расширенную статистику по расходам и доходам
-    - Группировка по категориям
+    - Группировка по категориям с визуализацией
+    - Сравнение с предыдущими периодами
+    - Анализ трендов расходов
     """
     user_id = message.from_user.id
     
@@ -201,11 +245,18 @@ async def cmd_stats(message: Message):
         # Получаем текущую дату и время
         now = datetime.now()
         today_start = datetime(now.year, now.month, now.day)
-        week_start = today_start - timedelta(days=now.weekday())
         month_start = datetime(now.year, now.month, 1)
         
+        # Определяем начало предыдущего месяца
+        if now.month == 1:
+            prev_month_start = datetime(now.year - 1, 12, 1)
+            prev_month_end = datetime(now.year, 1, 1)
+        else:
+            prev_month_start = datetime(now.year, now.month - 1, 1)
+            prev_month_end = month_start
+        
         # Запрашиваем расходы и доходы за текущий месяц
-        transactions = db.query(
+        current_transactions = db.query(
             Transaction, 
             Category.name.label('category_name'), 
             Category.emoji.label('category_emoji')
@@ -218,13 +269,28 @@ async def cmd_stats(message: Message):
             Transaction.transaction_date >= month_start
         ).order_by(desc(Transaction.transaction_date)).all()
         
-        # Группируем расходы по категориям
+        # Запрашиваем расходы и доходы за предыдущий месяц для сравнения
+        prev_transactions = db.query(
+            Transaction, 
+            Category.name.label('category_name'), 
+            Category.emoji.label('category_emoji')
+        ).join(
+            Category, 
+            Transaction.category_id == Category.id,
+            isouter=True
+        ).filter(
+            Transaction.user_id == user.id,
+            Transaction.transaction_date >= prev_month_start,
+            Transaction.transaction_date < prev_month_end
+        ).all()
+        
+        # Группируем текущие расходы по категориям
         expenses_by_category = defaultdict(float)
         expenses_total = 0
         income_by_category = defaultdict(float)
         income_total = 0
         
-        for tx, cat_name, cat_emoji in transactions:
+        for tx, cat_name, cat_emoji in current_transactions:
             category_name = cat_name or "другое"
             category_emoji = cat_emoji or "💰"
             
@@ -235,12 +301,72 @@ async def cmd_stats(message: Message):
                 income_by_category[(category_name, category_emoji)] += tx.amount
                 income_total += tx.amount
         
-        # Создаем ответное сообщение
-        response_parts = [f"📊 <b>Статистика за {calendar.month_name[now.month]}</b>\n"]
+        # Группируем предыдущие расходы по категориям для сравнения
+        prev_expenses_by_category = defaultdict(float)
+        prev_expenses_total = 0
+        prev_income_total = 0
         
-        # Добавляем расходы
+        for tx, cat_name, cat_emoji in prev_transactions:
+            category_name = cat_name or "другое"
+            category_emoji = cat_emoji or "💰"
+            
+            if tx.is_expense == 1:  # Расход
+                prev_expenses_by_category[(category_name, category_emoji)] += tx.amount
+                prev_expenses_total += tx.amount
+            else:  # Доход
+                prev_income_total += tx.amount
+        
+        # Создаем ответное сообщение
+        month_name = calendar.month_name[now.month]
+        prev_month_name = calendar.month_name[prev_month_start.month]
+        
+        response_parts = [f"📊 <b>СТАТИСТИКА ЗА {month_name.upper()}</b>\n"]
+        
+        # Добавляем сводку по текущему месяцу
+        response_parts.append("<b>ОБЩАЯ СВОДКА:</b>")
+        
+        # Сравниваем с предыдущим месяцем
+        expense_change = 0
+        expense_change_percent = 0
+        if prev_expenses_total > 0:
+            expense_change = expenses_total - prev_expenses_total
+            expense_change_percent = (expense_change / prev_expenses_total) * 100
+        
+        expense_trend = "➡️"
+        if expense_change_percent > 5:
+            expense_trend = "📈"
+        elif expense_change_percent < -5:
+            expense_trend = "📉"
+        
+        income_change = 0
+        income_change_percent = 0
+        if prev_income_total > 0:
+            income_change = income_total - prev_income_total
+            income_change_percent = (income_change / prev_income_total) * 100
+        
+        income_trend = "➡️"
+        if income_change_percent > 5:
+            income_trend = "📈"
+        elif income_change_percent < -5:
+            income_trend = "📉"
+        
+        # Добавляем сравнение с прошлым месяцем
+        response_parts.append(
+            f"• Расходы: <code>{expenses_total:.2f}</code> ₽ {expense_trend}\n"
+            f"• Доходы: <code>{income_total:.2f}</code> ₽ {income_trend}\n"
+            f"• Баланс: <code>{income_total - expenses_total:.2f}</code> ₽\n"
+        )
+        
+        if prev_expenses_total > 0 or prev_income_total > 0:
+            response_parts.append(
+                f"<i>По сравнению с {prev_month_name}:</i>\n"
+                f"• Расходы: {'+' if expense_change >= 0 else ''}{expense_change:.2f} ₽ ({'+' if expense_change_percent >= 0 else ''}{expense_change_percent:.1f}%)\n"
+                f"• Доходы: {'+' if income_change >= 0 else ''}{income_change:.2f} ₽ ({'+' if income_change_percent >= 0 else ''}{income_change_percent:.1f}%)\n"
+            )
+        
+        # Добавляем расходы по категориям с визуализацией
         if expenses_total > 0:
-            response_parts.append("\n<b>Расходы по категориям:</b>")
+            response_parts.append("\n<b>РАСХОДЫ ПО КАТЕГОРИЯМ:</b>")
             
             # Сортируем категории по убыванию сумм
             sorted_expenses = sorted(
@@ -249,17 +375,38 @@ async def cmd_stats(message: Message):
                 reverse=True
             )
             
-            for (category_name, category_emoji), amount in sorted_expenses:
-                percentage = (amount / expenses_total) * 100 if expenses_total > 0 else 0
+            # Создаем визуализацию для топ-5 категорий
+            top_categories = sorted_expenses[:5]
+            max_amount = top_categories[0][1] if top_categories else 0
+            
+            for (category_name, category_emoji), amount in top_categories:
+                percentage = (amount / expenses_total) * 100
+                bar_length = int((amount / max_amount) * 10) if max_amount > 0 else 0
+                bar = "█" * bar_length + "▒" * (10 - bar_length)
+                
+                # Получаем изменение по сравнению с прошлым месяцем
+                prev_amount = prev_expenses_by_category.get((category_name, category_emoji), 0)
+                change_str = ""
+                if prev_amount > 0:
+                    change = amount - prev_amount
+                    change_percent = (change / prev_amount) * 100
+                    change_symbol = "↗️" if change > 0 else "↘️" if change < 0 else "↔️"
+                    change_str = f" {change_symbol} {change_percent:.1f}%"
+                
                 response_parts.append(
-                    f"{category_emoji} {category_name.capitalize()}: {format_amount_markdown(amount)} ({percentage:.1f}%)"
+                    f"{category_emoji} {category_name.capitalize()}: <code>{amount:.2f}</code> ₽ ({percentage:.1f}%){change_str}\n"
+                    f"<code>{bar}</code>"
                 )
             
-            response_parts.append(f"\n<b>Всего расходов:</b> {format_amount_markdown(expenses_total)} ₽")
+            # Если есть еще категории, добавляем их в сокращенном виде
+            if len(sorted_expenses) > 5:
+                other_sum = sum(amount for (_, _), amount in sorted_expenses[5:])
+                other_percentage = (other_sum / expenses_total) * 100
+                response_parts.append(f"\nДругие категории: <code>{other_sum:.2f}</code> ₽ ({other_percentage:.1f}%)")
         
         # Добавляем доходы
         if income_total > 0:
-            response_parts.append("\n<b>Доходы:</b>")
+            response_parts.append("\n<b>ДОХОДЫ:</b>")
             
             sorted_income = sorted(
                 income_by_category.items(), 
@@ -268,14 +415,42 @@ async def cmd_stats(message: Message):
             )
             
             for (category_name, category_emoji), amount in sorted_income:
-                response_parts.append(f"{category_emoji} {category_name.capitalize()}: {format_amount_markdown(amount)}")
-            
-            response_parts.append(f"\n<b>Всего доходов:</b> {format_amount_markdown(income_total)} ₽")
+                percentage = (amount / income_total) * 100
+                response_parts.append(f"{category_emoji} {category_name.capitalize()}: <code>{amount:.2f}</code> ₽ ({percentage:.1f}%)")
         
-        # Добавляем баланс
-        balance = income_total - expenses_total
-        balance_emoji = "📈" if balance >= 0 else "📉"
-        response_parts.append(f"\n{balance_emoji} <b>Баланс:</b> {format_amount_markdown(balance)} ₽")
+        # Добавляем дневную статистику
+        days_passed = now.day
+        avg_daily_expense = expenses_total / days_passed if days_passed > 0 else 0
+        days_in_month = calendar.monthrange(now.year, now.month)[1]
+        days_left = days_in_month - days_passed
+        
+        response_parts.append(
+            f"\n<b>ДНЕВНАЯ СТАТИСТИКА:</b>\n"
+            f"• В среднем за день: <code>{avg_daily_expense:.2f}</code> ₽\n"
+            f"• Дней прошло: {days_passed} из {days_in_month}\n"
+            f"• Прогноз на месяц: <code>{avg_daily_expense * days_in_month:.2f}</code> ₽"
+        )
+        
+        # Добавляем советы по оптимизации расходов
+        if expenses_total > 0:
+            # Находим категорию с наибольшим ростом расходов
+            biggest_increase = None
+            biggest_increase_percent = 0
+            
+            for (category_name, category_emoji), amount in expenses_by_category.items():
+                prev_amount = prev_expenses_by_category.get((category_name, category_emoji), 0)
+                if prev_amount > 0:
+                    change_percent = ((amount - prev_amount) / prev_amount) * 100
+                    if change_percent > biggest_increase_percent:
+                        biggest_increase = (category_name, category_emoji)
+                        biggest_increase_percent = change_percent
+            
+            if biggest_increase and biggest_increase_percent > 20:
+                category_name, category_emoji = biggest_increase
+                response_parts.append(
+                    f"\n💡 <i>Совет: Обратите внимание на категорию {category_emoji} {category_name.capitalize()} — "
+                    f"расходы выросли на {biggest_increase_percent:.1f}% по сравнению с прошлым месяцем</i>"
+                )
         
         await message.answer("\n".join(response_parts), parse_mode=ParseMode.HTML)
     except Exception as e:
@@ -290,9 +465,11 @@ async def cmd_list_transactions(message: Message):
     """
     Обрабатывает команду /list:
     - Показывает список последних транзакций
+    - Группирует транзакции по дням
+    - Отображает итоги за каждый день
     """
     user_id = message.from_user.id
-    limit = 10  # Количество транзакций для отображения
+    limit = 15  # Увеличиваем количество транзакций для отображения
     
     # Создаем сессию БД
     db = SessionLocal()
@@ -321,26 +498,72 @@ async def cmd_list_transactions(message: Message):
             await message.answer("У вас пока нет записанных транзакций.")
             return
         
-        # Формируем сообщение
-        response = ["📋 <b>Последние транзакции:</b>\n"]
-        
-        for i, (tx, cat_name, cat_emoji) in enumerate(transactions, start=1):
+        # Группируем транзакции по дням
+        transactions_by_day = {}
+        for tx, cat_name, cat_emoji in transactions:
+            date_key = tx.transaction_date.strftime("%Y-%m-%d")
+            date_display = tx.transaction_date.strftime("%d.%m.%Y")
+            
+            if date_key not in transactions_by_day:
+                transactions_by_day[date_key] = {
+                    "display_date": date_display,
+                    "transactions": [],
+                    "expenses": 0,
+                    "income": 0
+                }
+            
             category_name = cat_name or "другое"
             category_emoji = cat_emoji or "💰"
             
-            # Определяем тип транзакции
-            icon = "➖" if tx.is_expense == 1 else "➕"
+            # Определяем тип транзакции и добавляем к соответствующей сумме
+            if tx.is_expense == 1:
+                transactions_by_day[date_key]["expenses"] += tx.amount
+            else:
+                transactions_by_day[date_key]["income"] += tx.amount
             
-            # Форматируем дату
-            date_str = tx.transaction_date.strftime("%d.%m.%Y")
+            # Добавляем данные о транзакции
+            transactions_by_day[date_key]["transactions"].append({
+                "id": tx.id,
+                "amount": tx.amount,
+                "currency": tx.currency,
+                "category_name": category_name,
+                "category_emoji": category_emoji,
+                "is_expense": tx.is_expense == 1,
+                "description": tx.description
+            })
+        
+        # Формируем сообщение
+        response = ["📋 <b>ИСТОРИЯ ТРАНЗАКЦИЙ</b>\n"]
+        
+        # Добавляем транзакции по дням
+        for date_key, day_data in transactions_by_day.items():
+            # Добавляем заголовок дня
+            day_balance = day_data["income"] - day_data["expenses"]
+            balance_sign = "+" if day_balance >= 0 else "-"
+            balance_emoji = "📈" if day_balance >= 0 else "📉"
             
-            # Форматируем сумму
-            amount_str = format_amount_markdown(tx.amount)
-            
-            # Формируем строку для транзакции
             response.append(
-                f"{i}. {icon} {date_str} {category_emoji} {category_name.capitalize()}: {amount_str} {tx.currency}"
+                f"\n<b>{day_data['display_date']} {balance_emoji}</b>\n"
+                f"<i>Расходы: <code>{day_data['expenses']:.2f}</code> ₽ • "
+                f"Доходы: <code>{day_data['income']:.2f}</code> ₽ • "
+                f"Баланс: <code>{balance_sign}{abs(day_balance):.2f}</code> ₽</i>"
             )
+            
+            # Добавляем транзакции за день
+            for tx in day_data["transactions"]:
+                icon = "➖" if tx["is_expense"] else "➕"
+                amount_str = f"{tx['amount']:.2f}"
+                
+                response.append(
+                    f"{icon} {tx['category_emoji']} <b>{tx['category_name'].capitalize()}</b>: "
+                    f"<code>{amount_str}</code> {tx['currency']}"
+                )
+        
+        # Добавляем подсказку для фильтрации
+        response.append(
+            f"\n<i>Используйте /list [категория] для фильтрации по категории</i>\n"
+            f"<i>Например: /list продукты или /list кафе</i>"
+        )
         
         await message.answer("\n".join(response), parse_mode=ParseMode.HTML)
     except Exception as e:
@@ -354,7 +577,8 @@ async def cmd_list_transactions(message: Message):
 async def cmd_delete_last(message: Message):
     """
     Обрабатывает команду /delete:
-    - Удаляет последнюю добавленную транзакцию
+    - Показывает последние транзакции для выбора
+    - Предлагает удалить последнюю или выбрать конкретную
     """
     user_id = message.from_user.id
     
@@ -368,114 +592,237 @@ async def cmd_delete_last(message: Message):
             await message.answer("Для начала работы, пожалуйста, используйте команду /start")
             return
         
-        # Находим последнюю транзакцию пользователя
-        last_transaction = db.query(Transaction).filter(
+        # Находим последние транзакции пользователя (до 5 штук)
+        recent_transactions = db.query(
+            Transaction, 
+            Category.name.label('category_name'), 
+            Category.emoji.label('category_emoji')
+        ).join(
+            Category, 
+            Transaction.category_id == Category.id,
+            isouter=True
+        ).filter(
             Transaction.user_id == user.id
-        ).order_by(desc(Transaction.created_at)).first()
+        ).order_by(desc(Transaction.created_at)).limit(5).all()
         
-        if not last_transaction:
+        if not recent_transactions:
             await message.answer("У вас нет транзакций для удаления.")
+            return
+        
+        # Создаем клавиатуру с кнопками для выбора транзакции
+        builder = InlineKeyboardBuilder()
+        
+        # Добавляем кнопку для удаления последней транзакции
+        last_tx, last_cat_name, last_cat_emoji = recent_transactions[0]
+        last_category_name = last_cat_name or "другое"
+        last_category_emoji = last_cat_emoji or "💰"
+        
+        builder.button(
+            text=f"Удалить последнюю: {last_category_emoji} {last_category_name} ({last_tx.amount} {last_tx.currency})",
+            callback_data=f"delete_confirm:{last_tx.id}"
+        )
+        
+        # Добавляем кнопки для других недавних транзакций
+        for tx, cat_name, cat_emoji in recent_transactions:
+            category_name = cat_name or "другое"
+            category_emoji = cat_emoji or "💰"
+            date_str = tx.transaction_date.strftime("%d.%m")
+            
+            # Пропускаем первую (последнюю) транзакцию, так как она уже добавлена выше
+            if tx.id == last_tx.id:
+                continue
+                
+            builder.button(
+                text=f"{date_str}: {category_emoji} {category_name} ({tx.amount} {tx.currency})",
+                callback_data=f"delete_tx:{tx.id}"
+            )
+        
+        # Добавляем кнопку отмены
+        builder.button(
+            text="❌ Отмена",
+            callback_data="delete_cancel"
+        )
+        
+        # Располагаем кнопки в столбик
+        builder.adjust(1)
+        
+        await message.answer(
+            "🗑️ <b>УДАЛЕНИЕ ТРАНЗАКЦИЙ</b>\n\n"
+            "Выберите транзакцию, которую хотите удалить:",
+            reply_markup=builder.as_markup(),
+            parse_mode=ParseMode.HTML
+        )
+    except Exception as e:
+        logging.error(f"Ошибка при подготовке к удалению транзакции: {e}")
+        await message.answer("Произошла ошибка при подготовке к удалению. Попробуйте позже.")
+    finally:
+        db.close()
+
+
+@router.callback_query(F.data.startswith("delete_tx:"))
+async def process_delete_selection(callback: CallbackQuery):
+    """Обрабатывает выбор транзакции для удаления"""
+    # Извлекаем ID транзакции из callback_data
+    tx_id = int(callback.data.split(":")[1])
+    
+    # Создаем клавиатуру для подтверждения
+    builder = InlineKeyboardBuilder()
+    builder.button(
+        text="✅ Да, удалить",
+        callback_data=f"delete_confirm:{tx_id}"
+    )
+    builder.button(
+        text="❌ Отмена",
+        callback_data="delete_cancel"
+    )
+    builder.adjust(2)
+    
+    await callback.message.edit_text(
+        "❓ <b>Подтверждение удаления</b>\n\n"
+        "Вы уверены, что хотите удалить эту транзакцию?",
+        reply_markup=builder.as_markup(),
+        parse_mode=ParseMode.HTML
+    )
+
+
+@router.callback_query(F.data.startswith("delete_confirm:"))
+async def process_delete_confirm(callback: CallbackQuery):
+    """Обрабатывает подтверждение удаления транзакции"""
+    # Извлекаем ID транзакции из callback_data
+    tx_id = int(callback.data.split(":")[1])
+    user_id = callback.from_user.id
+    
+    # Создаем сессию БД
+    db = SessionLocal()
+    try:
+        # Получаем пользователя из БД
+        user = db.query(User).filter(User.telegram_id == user_id).first()
+        
+        if not user:
+            await callback.message.edit_text("Для начала работы, пожалуйста, используйте команду /start")
+            return
+        
+        # Находим транзакцию по ID
+        transaction = db.query(Transaction).filter(
+            Transaction.id == tx_id,
+            Transaction.user_id == user.id
+        ).first()
+        
+        if not transaction:
+            await callback.message.edit_text("Транзакция не найдена или уже была удалена.")
             return
         
         # Получаем категорию, если она есть
         category = db.query(Category).filter(
-            Category.id == last_transaction.category_id
-        ).first() if last_transaction.category_id else None
+            Category.id == transaction.category_id
+        ).first() if transaction.category_id else None
         
         # Сохраняем данные для подтверждения
-        amount = last_transaction.amount
+        amount = transaction.amount
         category_name = category.name if category else "другое"
         category_emoji = category.emoji if category else "💰"
-        currency = last_transaction.currency
-        is_expense = last_transaction.is_expense == 1
+        currency = transaction.currency
+        is_expense = transaction.is_expense == 1
         
         # Удаляем запись из БД
-        db.delete(last_transaction)
+        db.delete(transaction)
         
         # Если это был расход, также удаляем соответствующую запись из таблицы expenses
         # для обратной совместимости
         if is_expense:
-            last_expense = db.query(Expense).filter(
-                Expense.user_id == user.id
-            ).order_by(desc(Expense.created_at)).first()
+            expense = db.query(Expense).filter(
+                Expense.user_id == user.id,
+                Expense.created_at == transaction.transaction_date
+            ).first()
             
-            if last_expense:
-                db.delete(last_expense)
+            if expense:
+                db.delete(expense)
         
         db.commit()
         
         # Определяем тип транзакции для сообщения
         transaction_type = "расход" if is_expense else "доход"
         
-        # Отправляем подтверждение об удалении в стиле Cointry
-        await message.answer(
-            f"🗑️ Удалена запись:\n"
+        # Отправляем подтверждение об удалении
+        await callback.message.edit_text(
+            f"✅ <b>Транзакция удалена</b>\n\n"
             f"<b>{category_emoji} {category_name.capitalize()}</b>\n"
-            f"{'➖' if is_expense else '➕'} {format_amount_markdown(amount)} {currency}",
+            f"{'➖' if is_expense else '➕'} <code>{amount:.2f}</code> {currency}",
             parse_mode=ParseMode.HTML
         )
     except Exception as e:
         db.rollback()
         logging.error(f"Ошибка при удалении транзакции: {e}")
-        await message.answer("Произошла ошибка при удалении записи. Попробуйте позже.")
+        await callback.message.edit_text("Произошла ошибка при удалении записи. Попробуйте позже.")
     finally:
         db.close()
 
 
+@router.callback_query(F.data == "delete_cancel")
+async def process_delete_cancel(callback: CallbackQuery):
+    """Обрабатывает отмену удаления транзакции"""
+    await callback.message.edit_text(
+        "❌ <b>Удаление отменено</b>\n\n"
+        "Транзакция не была удалена.",
+        parse_mode=ParseMode.HTML
+    )
+
+
 @router.message(Command("categories"))
 async def cmd_categories(message: Message):
-    """Показывает список доступных категорий с эмодзи"""
+    """
+    Показывает список доступных категорий с эмодзи,
+    сгруппированных по типам для удобства использования
+    """
     from bot.expense import recognize_category, get_category_emoji
     
-    # Получаем список категорий из функции распознавания
-    categories = {
-        "продукты": "🛒 Продукты (магнит, пятерочка, перекресток, ашан и т.д.)",
-        "кафе": "☕ Кафе (кофе, чай, кондитерская, пекарня)",
-        "ресторан": "🍽️ Рестораны (бары, фастфуд, доставка еды)",
-        "транспорт": "🚗 Транспорт (метро, автобус, проезд)",
-        "такси": "🚕 Такси (яндекс такси, uber, поездки)",
-        "одежда": "👕 Одежда (магазины одежды, онлайн-шопинг)",
-        "обувь": "👟 Обувь (магазины обуви)",
-        "развлечения": "🎮 Развлечения (игры, кино, театр, концерты)",
-        "здоровье": "💊 Здоровье (аптека, врач, клиника)",
-        "связь": "📱 Связь (телефон, интернет, операторы)",
-        "коммуналка": "🏠 Коммуналка (ЖКХ, аренда, квартплата)",
-        "образование": "📚 Образование (учеба, курсы, книги)"
+    # Группируем категории по типам
+    category_groups = {
+        "🍔 Питание": {
+            "продукты": "🛒 Продукты (магазины, супермаркеты)",
+            "кафе": "☕ Кафе (кофейни, пекарни)",
+            "ресторан": "🍽️ Рестораны (бары, фастфуд)"
+        },
+        "🚌 Транспорт": {
+            "транспорт": "🚗 Транспорт (общественный транспорт)",
+            "такси": "🚕 Такси (поездки)"
+        },
+        "👚 Шоппинг": {
+            "одежда": "👕 Одежда (магазины одежды)",
+            "обувь": "👟 Обувь (магазины обуви)"
+        },
+        "🏠 Дом и быт": {
+            "коммуналка": "🏠 Коммуналка (ЖКХ, аренда)",
+            "связь": "📱 Связь (телефон, интернет)"
+        },
+        "🎮 Досуг": {
+            "развлечения": "🎮 Развлечения (игры, кино, концерты)"
+        },
+        "🧠 Личное развитие": {
+            "образование": "📚 Образование (курсы, книги)",
+            "здоровье": "💊 Здоровье (аптека, врач)"
+        }
     }
     
     # Формируем сообщение со списком категорий
-    message_text = "📋 <b>Доступные категории:</b>\n\n"
+    message_text = "📋 <b>ДОСТУПНЫЕ КАТЕГОРИИ</b>\n\n"
     
-    for category, description in categories.items():
-        message_text += f"{description}\n"
+    # Добавляем категории по группам
+    for group_name, categories in category_groups.items():
+        message_text += f"<b>{group_name}</b>\n"
+        
+        for key, description in categories.items():
+            message_text += f"  • {description}\n"
+        
+        message_text += "\n"
     
-    message_text += "\n<i>При добавлении расхода бот автоматически определит категорию по ключевым словам</i>"
+    # Добавляем инструкцию по использованию
+    message_text += (
+        "<b>КАК ИСПОЛЬЗОВАТЬ:</b>\n"
+        "• Просто укажите категорию при добавлении расхода\n"
+        "• Пример: <code>500 продукты</code> или <code>250 кафе</code>\n"
+        "• Бот автоматически определит категорию по ключевым словам\n\n"
+        "<i>Вы также можете создавать свои категории, просто используя их в транзакциях</i>"
+    )
     
-    await message.answer(message_text, parse_mode=ParseMode.HTML)
-
-
-@router.message(Command("open"))
-async def cmd_open(message: Message):
-    """
-    Обрабатывает команду /open:
-    - Показывает справку по командам в стиле Cointry
-    """
-    await message.answer(
-        "<b>Команды:</b>\n\n"
-        "- <b>[сумма] [необязательный комментарий]</b>, чтобы записать расходы:\n"
-        "  `12000 куртка замшевая`\n\n"
-        "Если перед суммой добавить знак +, она запишется как доход:\n"
-        "  `+100000 нажито непосильным трудом`\n\n"
-        "⭐ Можно указать валюту в трёхбуквенном формате. В статистике сумма будет корректно сконвертирована в Вашу основную валюту по курсу на дату транзакции.\n"
-        "  `1600 USD три кинокамеры заграничных`\n\n"
-        "⭐ В конец команды можно добавить дату транзакции в форматах `1.12.20` или `2020-12-01`, а также можно просто написать `вчера` или `позавчера`:\n"
-        "  `4000 ресторан \"Плакучая ива\" 26.12.2024`\n\n"
-        "⭐ Если Ваш партнёр часто забывает делать записи, Вы можете делать это за него. Просто упомяните его по имени в Телеграме через @:\n"
-        "  `@durov 3600 три портсигара отечественных`\n\n"
-        "- `/open` - запустить приложение;\n"
-        "- Статистика или `/stats` - узнать статистику своих расходов;\n"
-        "- Удалить или `/delete` - удалить свою последнюю запись;\n"
-        "- История или `/list` - получить список всех записей;\n"
-        "- Категории или `/categories` - добавить или изменить категории;",
-        parse_mode=ParseMode.HTML
-    ) 
+    await message.answer(message_text, parse_mode=ParseMode.HTML) 

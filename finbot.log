@@ -1224,3 +1224,180 @@ inline_keyboard
 2025-06-26 05:02:35,484 - root - INFO - Категория 'магнит' для 'карандаш' определена с помощью LLM и сохранена в кэш
 2025-06-26 05:02:35,493 - root - INFO - Категория 'магнит' для 'магнит' взята из кэша
 2025-06-26 05:02:35,592 - aiogram.event - INFO - Update id=602019171 is handled. Duration 531 ms by bot id=8052771853
+2025-06-26 05:04:40,400 - aiogram.event - INFO - Update id=602019172 is handled. Duration 297 ms by bot id=8052771853
+2025-06-26 05:04:45,117 - aiogram.event - INFO - Update id=602019173 is handled. Duration 93 ms by bot id=8052771853
+2025-06-26 05:05:05,286 - root - WARNING - Обнаружена некорректная категория 'магнит' в кэше. Удаляем запись.
+2025-06-26 05:05:05,760 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:05:05,774 - root - INFO - Категория 'книги' для 'ручка' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:05:05,990 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:05:06,004 - root - INFO - Категория 'книги' для 'книги' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:05:06,253 - aiogram.event - INFO - Update id=602019174 is handled. Duration 984 ms by bot id=8052771853
+2025-06-26 05:05:19,844 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:05:19,858 - root - INFO - Категория 'другое' для 'саратов' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:05:19,954 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:05:20,052 - aiogram.event - INFO - Update id=602019175 is handled. Duration 593 ms by bot id=8052771853
+2025-06-26 05:05:36,868 - aiogram.event - INFO - Update id=602019176 is handled. Duration 233 ms by bot id=8052771853
+2025-06-26 05:05:52,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:05:52,318 - root - INFO - Категория 'книги' для 'книга' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:05:52,327 - root - INFO - Категория 'книги' для 'книги' взята из кэша
+2025-06-26 05:05:52,633 - aiogram.event - INFO - Update id=602019177 is handled. Duration 719 ms by bot id=8052771853
+2025-06-26 05:05:58,849 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:05:58,863 - root - INFO - Категория 'другое' для 'курсы' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:05:58,955 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:05:59,058 - aiogram.event - INFO - Update id=602019178 is handled. Duration 593 ms by bot id=8052771853
+2025-06-26 05:12:39,391 - aiogram.event - INFO - Update id=602019179 is handled. Duration 297 ms by bot id=8052771853
+2025-06-26 05:12:41,528 - aiogram.event - INFO - Update id=602019180 is handled. Duration 78 ms by bot id=8052771853
+2025-06-26 05:12:52,198 - aiogram.event - INFO - Update id=602019181 is not handled. Duration 0 ms by bot id=8052771853
+2025-06-26 05:12:57,870 - aiogram.event - INFO - Update id=602019182 is handled. Duration 312 ms by bot id=8052771853
+2025-06-26 05:21:30,256 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-06-26 05:21:30,257 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-26 05:21:31,262 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:31,262 - aiogram.dispatcher - WARNING - Sleep for 1.338733 seconds and try again... (tryings = 1, bot id = 8052771853)
+2025-06-26 05:21:32,608 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:32,609 - aiogram.dispatcher - WARNING - Sleep for 1.682465 seconds and try again... (tryings = 2, bot id = 8052771853)
+2025-06-26 05:21:46,342 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:46,343 - aiogram.dispatcher - WARNING - Sleep for 2.215006 seconds and try again... (tryings = 3, bot id = 8052771853)
+2025-06-26 05:21:48,562 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:48,563 - aiogram.dispatcher - WARNING - Sleep for 2.850549 seconds and try again... (tryings = 4, bot id = 8052771853)
+2025-06-26 05:21:51,440 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:51,441 - aiogram.dispatcher - WARNING - Sleep for 3.618055 seconds and try again... (tryings = 5, bot id = 8052771853)
+2025-06-26 05:21:55,069 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:21:55,070 - aiogram.dispatcher - WARNING - Sleep for 4.687752 seconds and try again... (tryings = 6, bot id = 8052771853)
+2025-06-26 05:22:03,474 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-26 05:22:03,476 - aiogram.dispatcher - WARNING - Sleep for 5.110798 seconds and try again... (tryings = 7, bot id = 8052771853)
+2025-06-26 05:22:18,901 - aiogram.dispatcher - INFO - Connection established (tryings = 8, bot id = 8052771853)
+2025-06-26 05:24:40,267 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-06-26 05:24:40,268 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-26 05:24:52,701 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-06-26 05:26:05,705 - aiogram.event - INFO - Update id=602019183 is handled. Duration 297 ms by bot id=8052771853
+2025-06-26 05:27:37,964 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-26 05:27:38,219 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:27:38,221 - __main__ - INFO - Бот остановлен
+2025-06-26 05:31:02,973 - root - INFO - БД инициализирована успешно
+2025-06-26 05:31:02,973 - __main__ - INFO - База данных инициализирована
+2025-06-26 05:31:02,974 - __main__ - INFO - Запуск бота...
+2025-06-26 05:31:03,340 - __main__ - INFO - Бот @finfinance_bot (8052771853) запущен
+2025-06-26 05:31:03,340 - aiogram.dispatcher - INFO - Start polling
+2025-06-26 05:31:03,407 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:31:21,836 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:31:21,849 - root - INFO - Категория 'другое' для 'айфо' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:31:22,099 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:31:22,200 - aiogram.event - INFO - Update id=602019184 is handled. Duration 891 ms by bot id=8052771853
+2025-06-26 05:31:26,233 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:31:26,246 - root - INFO - Категория 'другое' для 'айфон' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:31:26,361 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:31:26,458 - aiogram.event - INFO - Update id=602019185 is handled. Duration 500 ms by bot id=8052771853
+2025-06-26 05:31:31,681 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:31:31,688 - root - INFO - Категория 'другое' для 'смавыртфон' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:31:31,786 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:31:31,886 - aiogram.event - INFO - Update id=602019186 is handled. Duration 625 ms by bot id=8052771853
+2025-06-26 05:31:41,537 - root - INFO - Категория 'связь' для 'телкефон' определена с помощью словаря товаров
+2025-06-26 05:31:41,544 - root - INFO - Категория 'связь' для 'связь' определена с помощью словаря товаров
+2025-06-26 05:31:41,640 - aiogram.event - INFO - Update id=602019187 is handled. Duration 110 ms by bot id=8052771853
+2025-06-26 05:31:49,239 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:31:49,253 - root - INFO - Категория 'продукты' для 'Mars' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:31:49,263 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-26 05:31:49,364 - aiogram.event - INFO - Update id=602019188 is handled. Duration 547 ms by bot id=8052771853
+2025-06-26 05:31:56,256 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:31:56,265 - root - INFO - Категория 'продукты' для 'Apple' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:31:56,274 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-26 05:31:56,368 - aiogram.event - INFO - Update id=602019189 is handled. Duration 530 ms by bot id=8052771853
+2025-06-26 05:32:02,710 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:02,724 - root - INFO - Категория 'связь' для 'iphone' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:02,732 - root - INFO - Категория 'связь' для 'связь' взята из кэша
+2025-06-26 05:32:02,827 - aiogram.event - INFO - Update id=602019190 is handled. Duration 547 ms by bot id=8052771853
+2025-06-26 05:32:11,424 - root - INFO - Категория 'магнит' для 'красно белое' взята из кэша
+2025-06-26 05:32:11,433 - root - INFO - Категория 'магнит' для 'магнит' взята из кэша
+2025-06-26 05:32:11,531 - aiogram.event - INFO - Update id=602019191 is handled. Duration 108 ms by bot id=8052771853
+2025-06-26 05:32:16,175 - root - INFO - Категория 'магнит' для 'магнит' взята из кэша
+2025-06-26 05:32:16,183 - root - INFO - Категория 'магнит' для 'магнит' взята из кэша
+2025-06-26 05:32:16,280 - aiogram.event - INFO - Update id=602019192 is handled. Duration 155 ms by bot id=8052771853
+2025-06-26 05:32:20,246 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:20,298 - root - INFO - Категория 'магнит' для 'пятерочка' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:20,306 - root - INFO - Категория 'магнит' для 'магнит' взята из кэша
+2025-06-26 05:32:20,402 - aiogram.event - INFO - Update id=602019193 is handled. Duration 577 ms by bot id=8052771853
+2025-06-26 05:32:24,178 - aiogram.event - INFO - Update id=602019194 is not handled. Duration 0 ms by bot id=8052771853
+2025-06-26 05:32:27,506 - aiogram.event - INFO - Update id=602019195 is not handled. Duration 0 ms by bot id=8052771853
+2025-06-26 05:32:33,877 - aiogram.event - INFO - Update id=602019196 is not handled. Duration 16 ms by bot id=8052771853
+2025-06-26 05:32:38,203 - aiogram.event - INFO - Update id=602019197 is handled. Duration 250 ms by bot id=8052771853
+2025-06-26 05:32:43,382 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:43,390 - root - INFO - Категория 'магнит' для 'пятерочка' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:43,637 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:43,651 - root - INFO - Категория 'магнит' для 'магнит' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:43,745 - aiogram.event - INFO - Update id=602019198 is handled. Duration 844 ms by bot id=8052771853
+2025-06-26 05:32:48,514 - aiogram.event - INFO - Update id=602019199 is handled. Duration 94 ms by bot id=8052771853
+2025-06-26 05:32:54,609 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:54,622 - root - INFO - Категория 'другое' для 'ручка' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:54,952 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:32:54,965 - root - INFO - Категория 'другое' для 'другое' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:32:55,066 - aiogram.event - INFO - Update id=602019200 is handled. Duration 922 ms by bot id=8052771853
+2025-06-26 05:33:01,259 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:33:01,272 - root - INFO - Категория 'другое' для 'карандаш' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:33:01,366 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:33:01,468 - aiogram.event - INFO - Update id=602019201 is handled. Duration 641 ms by bot id=8052771853
+2025-06-26 05:33:37,859 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:33:37,873 - root - INFO - Категория 'другое' для 'карандаши' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:33:38,162 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:33:38,282 - aiogram.event - INFO - Update id=602019202 is handled. Duration 875 ms by bot id=8052771853
+2025-06-26 05:33:41,975 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:33:41,984 - root - INFO - Категория 'другое' для 't2' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:33:42,119 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-06-26 05:33:42,245 - aiogram.event - INFO - Update id=602019203 is handled. Duration 530 ms by bot id=8052771853
+2025-06-26 05:33:51,000 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:33:51,014 - root - INFO - Категория 'спар' для 'спар' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:33:51,023 - root - INFO - Категория 'спар' для 'спар' взята из кэша
+2025-06-26 05:33:51,118 - aiogram.event - INFO - Update id=602019204 is handled. Duration 594 ms by bot id=8052771853
+2025-06-26 05:37:38,987 - aiogram.event - INFO - Update id=602019205 is handled. Duration 422 ms by bot id=8052771853
+2025-06-26 05:37:55,030 - aiogram.event - INFO - Update id=602019206 is handled. Duration 219 ms by bot id=8052771853
+2025-06-26 05:37:57,815 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-26 05:37:58,073 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:37:58,075 - __main__ - INFO - Бот остановлен
+2025-06-26 05:38:03,236 - root - INFO - БД инициализирована успешно
+2025-06-26 05:38:03,237 - __main__ - INFO - База данных инициализирована
+2025-06-26 05:38:03,237 - __main__ - INFO - Запуск бота...
+2025-06-26 05:38:03,527 - __main__ - INFO - Бот @finfinance_bot (8052771853) запущен
+2025-06-26 05:38:03,528 - aiogram.dispatcher - INFO - Start polling
+2025-06-26 05:38:03,599 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:38:06,595 - aiogram.event - INFO - Update id=602019207 is handled. Duration 264 ms by bot id=8052771853
+2025-06-26 05:38:18,306 - root - INFO - Категория 'кафе' для 'чай' определена с помощью словаря товаров
+2025-06-26 05:38:18,314 - root - INFO - Категория 'кафе' для 'кафе' определена с помощью словаря товаров
+2025-06-26 05:38:18,410 - aiogram.event - INFO - Update id=602019208 is handled. Duration 125 ms by bot id=8052771853
+2025-06-26 05:38:21,004 - aiogram.event - INFO - Update id=602019209 is handled. Duration 110 ms by bot id=8052771853
+2025-06-26 05:38:26,001 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:38:26,094 - aiogram.event - INFO - Update id=602019210 is handled. Duration 907 ms by bot id=8052771853
+2025-06-26 05:38:38,038 - aiogram.event - INFO - Update id=602019211 is handled. Duration 391 ms by bot id=8052771853
+2025-06-26 05:40:48,637 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:40:48,939 - aiogram.event - INFO - Update id=602019212 is handled. Duration 1108 ms by bot id=8052771853
+2025-06-26 05:41:01,082 - root - INFO - БД инициализирована успешно
+2025-06-26 05:41:01,082 - __main__ - INFO - База данных инициализирована
+2025-06-26 05:41:01,082 - __main__ - INFO - Запуск бота...
+2025-06-26 05:41:01,395 - __main__ - INFO - Бот @finfinance_bot (8052771853) запущен
+2025-06-26 05:41:01,395 - aiogram.dispatcher - INFO - Start polling
+2025-06-26 05:41:01,471 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:41:01,538 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-26 05:41:01,540 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-26 05:41:04,249 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-26 05:41:04,495 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:41:04,498 - __main__ - INFO - Бот остановлен
+2025-06-26 05:41:05,626 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-06-26 05:41:05,626 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-26 05:41:07,188 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-26 05:41:07,446 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:41:07,448 - __main__ - INFO - Бот остановлен
+2025-06-26 05:41:13,768 - root - INFO - БД инициализирована успешно
+2025-06-26 05:41:13,769 - __main__ - INFO - База данных инициализирована
+2025-06-26 05:41:13,769 - __main__ - INFO - Запуск бота...
+2025-06-26 05:41:14,425 - __main__ - INFO - Бот @finfinance_bot (8052771853) запущен
+2025-06-26 05:41:14,426 - aiogram.dispatcher - INFO - Start polling
+2025-06-26 05:41:14,495 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-26 05:41:15,896 - root - INFO - Категория 'продукты' для 'спар' определена с помощью словаря товаров
+2025-06-26 05:41:15,902 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-06-26 05:41:16,160 - aiogram.event - INFO - Update id=602019213 is handled. Duration 280 ms by bot id=8052771853
+2025-06-26 05:41:19,856 - root - INFO - Категория 'продукты' для 'магнит' определена с помощью словаря товаров
+2025-06-26 05:41:19,863 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-26 05:41:20,016 - aiogram.event - INFO - Update id=602019214 is handled. Duration 157 ms by bot id=8052771853
+2025-06-26 05:42:08,236 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:42:08,250 - root - INFO - Категория 'другое' для 'лдафыдлав' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:42:08,749 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-26 05:42:08,759 - root - INFO - Категория 'другое' для 'другое' определена с помощью LLM и сохранена в кэш
+2025-06-26 05:42:08,875 - aiogram.event - INFO - Update id=602019215 is handled. Duration 1141 ms by bot id=8052771853

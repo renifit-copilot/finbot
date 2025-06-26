@@ -1,10 +1,11 @@
 import asyncio
 import logging
 import sys
+import os
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
+from aiogram.fsm.storage.memory import MemoryStorage
 from dotenv import load_dotenv
-import os
 from bot.commands import router as commands_router
 from bot.expense import router as expense_router
 from core.db import init_db
@@ -33,13 +34,18 @@ if not BOT_TOKEN:
     logger.error("Токен бота не найден. Укажите BOT_TOKEN в файле .env")
     sys.exit(1)
 
+# Проверяем наличие API ключа для Groq
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    logger.warning("API ключ Groq не найден. Функции LLM будут недоступны.")
+
 
 async def main():
     """Основная функция запуска бота"""
     
-    # Инициализируем бота и диспетчер
+    # Инициализируем бота и диспетчер с хранилищем состояний
     bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
-    dp = Dispatcher()
+    dp = Dispatcher(storage=MemoryStorage())
     
     # Регистрируем роутеры
     dp.include_router(commands_router)
@@ -49,9 +55,21 @@ async def main():
     init_db()
     logger.info("База данных инициализирована")
     
+    # Проверяем наличие директории для хранения чеков
+    receipts_dir = "receipts"
+    if not os.path.exists(receipts_dir):
+        os.makedirs(receipts_dir)
+        logger.info(f"Создана директория для хранения чеков: {receipts_dir}")
+    
     # Запускаем бота
     logger.info("Запуск бота...")
     await bot.delete_webhook(drop_pending_updates=True)
+    
+    # Выводим информацию о боте
+    bot_info = await bot.get_me()
+    logger.info(f"Бот @{bot_info.username} ({bot_info.id}) запущен")
+    
+    # Запускаем поллинг
     await dp.start_polling(bot)
 
 

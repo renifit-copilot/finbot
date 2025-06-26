@@ -5,11 +5,13 @@ from sqlalchemy.orm import Session
 import re
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 import logging
-from core.models import User, Expense as ExpenseModel
+from core.models import User, Expense as ExpenseModel, Category, Transaction
 from core.db import SessionLocal
 from core.ocr import parse_receipt
+from core.llm import categorize_transaction
+from typing import Optional, Dict, Any
 
 
 # Создаем роутер для обработки расходов
@@ -36,13 +38,6 @@ async def process_expense_message(message: Message):
         amount = float(amount_str)
         category_input = match.group(2).strip().lower()
         
-        # Распознаем категорию по ключевым словам
-        category = recognize_category(category_input)
-        
-        # Если категория не распознана, используем введенную пользователем
-        if category == "другое":
-            category = category_input
-        
         # Создаем сессию БД
         db = SessionLocal()
         try:
@@ -53,6 +48,13 @@ async def process_expense_message(message: Message):
                 # Если пользователя нет в базе, предлагаем начать с /start
                 await message.answer("Для начала работы, пожалуйста, используйте команду /start")
                 return
+            
+            # Используем LLM для определения категории
+            category = categorize_transaction(category_input, db, user.id)
+            
+            # Если категория не определена, используем введенную пользователем
+            if not category:
+                category = category_input
             
             # Создаем новую запись о расходе
             expense = ExpenseModel(
@@ -130,13 +132,6 @@ async def process_receipt_photo(message: Message):
             )
             return
         
-        # Распознаем категорию по ключевым словам
-        category = recognize_category(category_input)
-        
-        # Если категория не распознана, используем оригинальную
-        if category == "другое" and category_input != "ошибка" and category_input != "другое":
-            category = category_input
-        
         # Создаем сессию БД
         db = SessionLocal()
         try:
@@ -146,6 +141,14 @@ async def process_receipt_photo(message: Message):
             if not user:
                 await message.answer("Для начала работы, пожалуйста, используйте команду /start")
                 return
+            
+            # Используем LLM для определения категории на основе информации из чека
+            receipt_info = f"Чек на сумму {amount} руб. Магазин: {category_input}"
+            category = categorize_transaction(receipt_info, db, user.id)
+            
+            # Если категория не определена, используем распознанную из OCR
+            if not category:
+                category = recognize_category(category_input)
             
             # Создаем новую запись о расходе
             expense = ExpenseModel(
@@ -196,7 +199,6 @@ from datetime import datetime, timedelta
 from typing import Tuple, Optional, Dict, List
 import json
 from sqlalchemy import desc, func
-from core.models import Category, Transaction
 
 
 # Словарь эмодзи для категорий расходов
@@ -370,12 +372,20 @@ async def get_or_create_category(db: Session, user_id: int, category_name: str, 
     # Нормализация имени категории
     category_name = category_name.lower().strip()
     
-    # Распознаем категорию по ключевым словам
-    recognized_category = recognize_category(category_name)
-    
-    # Если категория распознана как "другое", используем оригинальное название
-    # Иначе используем распознанную категорию
-    category_to_use = recognized_category if recognized_category != "другое" else category_name
+    # Пытаемся использовать LLM для категоризации
+    try:
+        recognized_category = categorize_transaction(category_name, db, user_id)
+        if recognized_category:
+            category_to_use = recognized_category
+        else:
+            # Если LLM не смог определить категорию, используем регулярные выражения
+            recognized_category = recognize_category(category_name)
+            category_to_use = recognized_category if recognized_category != "другое" else category_name
+    except Exception as e:
+        logging.error(f"Ошибка при использовании LLM для категоризации: {e}")
+        # В случае ошибки используем регулярные выражения
+        recognized_category = recognize_category(category_name)
+        category_to_use = recognized_category if recognized_category != "другое" else category_name
     
     # Ищем существующую категорию
     category = db.query(Category).filter(
@@ -400,104 +410,102 @@ async def get_or_create_category(db: Session, user_id: int, category_name: str, 
     return category
 
 
-def parse_transaction_message(text: str) -> Dict:
+def parse_transaction_message(text: str) -> Optional[Dict[str, Any]]:
     """
-    Парсит сообщение о транзакции и извлекает детали.
+    Парсит сообщение о транзакции в расширенных форматах.
     
-    Форматы:
-    - [сумма] [категория] - расход
-    - +[сумма] [категория] - доход
-    - [сумма] [валюта] [категория] - расход с указанием валюты
-    - [сумма] [категория] [дата] - расход с указанием даты
-    - [сумма] [категория] @[пользователь] - расход с указанием пользователя
+    Поддерживаемые форматы:
+    - 500 обед
+    - -500 такси
+    - +50000 зарплата
+    - 100 USD книги
+    - 250 ресторан вчера
+    - 1500 подарок @иван
+    
+    Returns:
+        Dict с данными о транзакции или None, если не удалось распознать
     """
-    result = {
-        "amount": 0.0,
-        "original_amount": None,
-        "currency": "RUB",
-        "category": "другое",
-        "is_expense": True,
-        "date": datetime.now(),
-        "mentioned_user": None,
-    }
-    
-    # Удаляем лишние пробелы и бэктики
-    text = text.strip().replace('`', '')
-    
-    # Проверяем, является ли это доходом или расходом
-    if text.startswith('+'):
-        result["is_expense"] = False
-        text = text[1:]  # Убираем символ +
-    
-    # Парсим сумму (обязательное поле)
-    amount_match = re.search(AMOUNT_PATTERN, text)
-    if not amount_match:
-        return None
-    
-    amount_str = amount_match.group(1).replace(',', '.')
-    result["amount"] = abs(float(amount_str))  # Всегда храним положительное число
-    
-    # Убираем сумму из текста
-    text = text.replace(amount_match.group(0), '', 1).strip()
-    
-    # Парсим валюту (опциональное поле)
-    currency_match = re.search(CURRENCY_PATTERN, text)
-    if currency_match:
-        result["currency"] = currency_match.group(1).upper()
-        # Убираем валюту из текста
-        text = text.replace(currency_match.group(0), '', 1).strip()
-        # Сохраняем оригинальную сумму перед конвертацией
-        result["original_amount"] = result["amount"]
-    
-    # Парсим упоминание пользователя (опциональное поле)
-    if "@" in text:
-        at_index = text.find('@')
-        if at_index >= 0:
-            # Извлекаем имя пользователя, предполагая, что оно заканчивается пробелом или концом строки
-            user_end = text.find(' ', at_index)
-            if user_end == -1:  # Если пробела после @ нет, значит имя до конца строки
-                user_end = len(text)
-            username = text[at_index+1:user_end]
-            result["mentioned_user"] = username
-            
-            # Убираем упоминание из текста
-            text = text.replace("@" + username, '', 1).strip()
-    
-    # Парсим дату (опциональное поле)
-    date_match = re.search(DATE_PATTERN, text)
-    if date_match:
-        date_str = date_match.group(1)
+    try:
+        # Разбиваем сообщение на части
+        parts = text.strip().split()
+        
+        if len(parts) < 2:
+            return None
+        
+        # Определяем сумму и знак
+        amount_str = parts[0].replace(',', '.')
+        is_expense = True
+        
+        if amount_str.startswith('+'):
+            is_expense = False
+            amount_str = amount_str[1:]
+        elif amount_str.startswith('-'):
+            amount_str = amount_str[1:]
+        
+        # Проверяем, является ли первая часть числом
         try:
-            if date_str == "вчера":
-                result["date"] = datetime.now() - timedelta(days=1)
-            elif date_str == "позавчера":
-                result["date"] = datetime.now() - timedelta(days=2)
-            elif '.' in date_str:  # Формат DD.MM.YYYY или DD.MM.YY
-                parts = date_str.split('.')
-                day = int(parts[0])
-                month = int(parts[1])
-                year = int(parts[2])
-                if year < 100:  # Если год двузначный
-                    year += 2000
-                result["date"] = datetime(year, month, day)
-            elif '-' in date_str:  # Формат YYYY-MM-DD
-                parts = date_str.split('-')
-                year = int(parts[0])
-                month = int(parts[1])
-                day = int(parts[2])
-                result["date"] = datetime(year, month, day)
-        except (ValueError, IndexError):
-            # В случае ошибки при парсинге даты, используем текущую дату
-            pass
+            amount = float(amount_str)
+        except ValueError:
+            return None
         
-        # Убираем дату из текста
-        text = text.replace(date_match.group(0), '', 1).strip()
-    
-    # Оставшийся текст считаем категорией/описанием
-    if text:
-        result["category"] = text
+        # Проверяем валюту (если указана)
+        currency = "RUB"  # По умолчанию рубли
+        currency_idx = 1
         
-    return result
+        if len(parts) > 1 and parts[1].upper() in ["USD", "EUR", "RUB"]:
+            currency = parts[1].upper()
+            currency_idx = 2
+        
+        # Получаем описание транзакции (всё, что после суммы и валюты)
+        description = " ".join(parts[currency_idx:])
+        
+        # Проверяем наличие даты в описании
+        date_keywords = ["вчера", "позавчера", "сегодня"]
+        transaction_date = datetime.now()
+        
+        for keyword in date_keywords:
+            if keyword in description.lower():
+                if keyword == "вчера":
+                    transaction_date = datetime.now() - timedelta(days=1)
+                elif keyword == "позавчера":
+                    transaction_date = datetime.now() - timedelta(days=2)
+                # Удаляем ключевое слово даты из описания
+                description = description.replace(keyword, "").strip()
+                break
+        
+        # Проверяем наличие упоминания пользователя
+        mentioned_user = None
+        if "@" in description:
+            parts = description.split()
+            for part in parts:
+                if part.startswith("@"):
+                    mentioned_user = part[1:]  # Убираем символ @
+                    # Удаляем упоминание пользователя из описания
+                    description = description.replace(part, "").strip()
+                    break
+        
+        # Оригинальная сумма (в указанной валюте)
+        original_amount = amount
+        
+        # Конвертируем в рубли, если валюта не рубли (упрощенно)
+        if currency == "USD":
+            amount *= 90  # Примерный курс
+        elif currency == "EUR":
+            amount *= 100  # Примерный курс
+        
+        return {
+            "amount": amount,
+            "original_amount": original_amount,
+            "currency": currency,
+            "description": description,
+            "date": transaction_date,
+            "is_expense": is_expense,
+            "mentioned_user": mentioned_user
+        }
+        
+    except Exception as e:
+        logging.error(f"Ошибка при парсинге сообщения о транзакции: {e}")
+        return None
 
 
 @router.message(F.text.regexp(r'^(-|\+)?\d+(?:[.,]\d+)?(?:\s+\S+)+$'))
@@ -532,11 +540,60 @@ async def process_transaction(message: Message):
                 await message.answer("Для начала работы, пожалуйста, используйте команду /start")
                 return
             
+            # Определяем стандартные категории
+            default_categories = [
+                "продукты", "кафе", "рестораны", "транспорт", "такси", 
+                "одежда", "развлечения", "здоровье", "связь", "коммуналка", 
+                "образование", "спорт", "путешествия", "подарки", "техника",
+                "зарплата", "доход", "другое"
+            ]
+            
+            # Получаем список категорий пользователя
+            user_categories = db.query(Category).filter(
+                Category.user_id == user.id,
+                Category.is_expense == (1 if transaction_data["is_expense"] else 0)
+            ).all()
+            
+            # Если у пользователя есть категории, используем их, иначе используем стандартные
+            if user_categories:
+                categories_list = [category.name for category in user_categories]
+            else:
+                categories_list = default_categories
+            
+            # Получаем описание транзакции для определения категории
+            description = transaction_data["description"]
+            
+            # Используем LLM для определения категории на основе описания
+            llm_category = categorize_transaction(description, db, user.id)
+            
+            # Если LLM определила категорию как "другое", предлагаем пользователю уточнить категорию
+            if llm_category == "другое":
+                # Получаем список доступных категорий для отображения
+                categories_text = ", ".join(categories_list)
+                
+                await message.answer(
+                    f"Не удалось точно определить категорию для транзакции: <b>{description}</b>\n\n"
+                    f"Пожалуйста, укажите категорию из списка для улучшения категоризации:\n"
+                    f"<i>{categories_text}</i>\n\n"
+                    f"Или оставьте категорию <b>другое</b>.",
+                    parse_mode=ParseMode.HTML
+                )
+                
+                # Добавляем транзакцию с категорией "другое"
+                category_name = "другое"
+            else:
+                # Дополнительная проверка, что категория из LLM находится в списке разрешенных
+                if llm_category in categories_list:
+                    category_name = llm_category
+                else:
+                    logging.warning(f"LLM вернула недопустимую категорию: '{llm_category}'. Используем 'другое'")
+                    category_name = "другое"
+            
             # Получаем или создаем категорию
             category = await get_or_create_category(
                 db, 
                 user.id, 
-                transaction_data["category"], 
+                category_name, 
                 transaction_data["is_expense"]
             )
             
@@ -560,7 +617,7 @@ async def process_transaction(message: Message):
                 expense = ExpenseModel(
                     user_id=user.id,
                     amount=transaction_data["amount"],
-                    category=transaction_data["category"],
+                    category=category_name,
                     description=message.text,
                     created_at=transaction_data["date"]
                 )

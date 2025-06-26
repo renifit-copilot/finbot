@@ -8,7 +8,7 @@ from pathlib import Path
 # Создаем базовый класс для моделей
 Base = declarative_base()
 
-# Создаем движок SQLAlchemy с указанным URI
+# Создаем движок SQLAlchemy
 engine = create_engine(settings.DB_PATH)
 
 # Создаем фабрику сессий
@@ -17,11 +17,11 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def init_db() -> None:
     """
-    Инициализация базы данных: создание таблиц, если их нет.
+    Инициализирует базу данных и создает таблицы, если их нет
     """
     try:
-        # Импортируем модели здесь, чтобы избежать циклического импорта
-        from core.models import User, Expense, Goal
+        # Импортируем модели, чтобы они были доступны при создании таблиц
+        from core.models import User, Expense, Goal, Category, Transaction, CategoryCache
         
         # Создаем таблицы
         Base.metadata.create_all(bind=engine)

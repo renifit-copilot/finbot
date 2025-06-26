@@ -1,22 +1,35 @@
 from aiogram import Router, types, F
 from aiogram.filters import Command
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.enums import ParseMode
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 import logging
-from core.models import User, Expense, Transaction, Category
+from core.models import User, Expense, Transaction, Category, CategoryCache
 from core.db import SessionLocal
-from core.llm import get_advice
+from core.llm import get_advice, update_category_cache
 from sqlalchemy import func, desc, and_, extract
 import calendar
 from collections import defaultdict
 from aiogram.utils.markdown import code
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+import matplotlib.pyplot as plt
+import io
+import os
+import pandas as pd
+import numpy as np
+from typing import List, Dict, Any, Tuple
 
 
 # Создаем роутер для команд
 router = Router()
+
+
+class FeedbackStates(StatesGroup):
+    """Состояния для процесса обратной связи по категоризации"""
+    waiting_for_category = State()
 
 
 @router.message(Command("start"))
@@ -52,27 +65,18 @@ async def cmd_start(message: Message):
         
         # Отправляем приветственное сообщение с полной справкой
         await message.answer(
-            f"👋 <b>Привет, {first_name or username or 'друг'}!</b>\n\n"
-            f"Я твой персональный финансовый бот. Помогу тебе отслеживать расходы и экономить деньги.\n\n"
-            f"<b>💰 КАК ДОБАВИТЬ ТРАНЗАКЦИЮ:</b>\n\n"
-            f"<code>500 кофе</code> — добавить расход\n"
-            f"<code>+5000 зарплата</code> — добавить доход\n"
-            f"<code>100 USD книги</code> — указать другую валюту\n\n"
-            f"<i>Дополнительные возможности:</i>\n"
-            f"• Дата: <code>500 обед вчера</code>\n"
-            f"• Для другого пользователя: <code>1500 подарок @username</code>\n"
-            f"• Фото чека — автоматическое распознавание\n\n"
-            f"<b>📊 ОСНОВНЫЕ КОМАНДЫ:</b>\n\n"
-            f"/summary — краткая сводка по расходам\n"
-            f"/stats — подробная статистика по категориям\n"
-            f"/list — история последних транзакций\n"
-            f"/delete — удалить последнюю запись\n"
-            f"/categories — список доступных категорий\n\n"
-            f"<b>ℹ️ ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ:</b>\n\n"
-            f"<blockquote>12000 куртка замшевая</blockquote>\n"
-            f"<blockquote>+100000 зарплата</blockquote>\n"
-            f"<blockquote>1600 USD покупки в интернете</blockquote>\n"
-            f"<blockquote>4000 ресторан 26.12.2024</blockquote>\n\n"
+            f"👋 <b>Привет, {first_name or username or 'друг'}! Я помошник Finbot! </b>\n\n"
+            f"<b>Просто напишите мне свои расходы в следующем формате, и я запишу их:</b>\n\n"
+            f"<blockquote>[сколько] [на что]</blockquote>\n\n"
+            f"Например:\n"
+            f"<blockquote>2500 продукты</blockquote>\n\n"
+            f"А чтобы записать доход, добавьте впереди + без пробела:\n"
+            f"<blockquote>+10000 аванс</blockquote>\n\n"
+            f"Добавить или изменить категории можно командой <b>Категории</b> или /categories.\n\n"
+            f"Получить статистику доходов и расходов можно командой <b>Статистика</b> или /stats.\n\n"
+            f"Для удаления последней записи, отправьте команду <b>Удалить</b> или /delete.\n\n"
+            f"Краткую сводку по расходам можно получить командой <b>Отчет</b> или /summary.\n\n"
+            f"Посмотреть все записи можно командой /list или открыв мини-приложение /open.\n\n"
             f"Все данные хранятся локально и доступны только вам.",
             parse_mode=ParseMode.HTML
         )
@@ -198,14 +202,14 @@ async def cmd_summary(message: Message):
         
         # Формируем сообщение
         await message.answer(
-            f"📊 <b>ФИНАНСОВАЯ СВОДКА</b>\n\n"
+            f"<b>ФИНАНСОВАЯ СВОДКА</b>\n\n"
             f"<b>Сегодня:</b> {day_trend} <code>{day_formatted}</code> ₽\n"
             f"<b>Неделя:</b> {week_trend} <code>{week_formatted}</code> ₽\n"
             f"<b>Месяц:</b> <code>{month_formatted}</code> ₽\n\n"
             f"<b>Прогресс по бюджету:</b> {progress_percent}%\n"
             f"<code>{progress_bar}</code>\n\n"
             f"<b>Прогноз на месяц:</b> <code>{forecast_formatted}</code> ₽\n\n"
-            f"💡 <i>{advice}</i>\n\n"
+            f"<blockquote>{advice}</blockquote>\n\n"
             f"<i>Используйте /stats для подробной статистики</i>",
             parse_mode=ParseMode.HTML
         )
@@ -320,7 +324,7 @@ async def cmd_stats(message: Message):
         month_name = calendar.month_name[now.month]
         prev_month_name = calendar.month_name[prev_month_start.month]
         
-        response_parts = [f"📊 <b>СТАТИСТИКА ЗА {month_name.upper()}</b>\n"]
+        response_parts = [f"<b>СТАТИСТИКА ЗА {month_name.upper()}</b>\n"]
         
         # Добавляем сводку по текущему месяцу
         response_parts.append("<b>ОБЩАЯ СВОДКА:</b>")
@@ -533,7 +537,7 @@ async def cmd_list_transactions(message: Message):
             })
         
         # Формируем сообщение
-        response = ["📋 <b>ИСТОРИЯ ТРАНЗАКЦИЙ</b>\n"]
+        response = ["<b>ИСТОРИЯ ТРАНЗАКЦИЙ</b>\n"]
         
         # Добавляем транзакции по дням
         for date_key, day_data in transactions_by_day.items():
@@ -543,10 +547,10 @@ async def cmd_list_transactions(message: Message):
             balance_emoji = "📈" if day_balance >= 0 else "📉"
             
             response.append(
-                f"\n<b>{day_data['display_date']} {balance_emoji}</b>\n"
+                f"\n<b>{day_data['display_date']} {balance_emoji}</b>\n\n"
                 f"<i>Расходы: <code>{day_data['expenses']:.2f}</code> ₽ • "
                 f"Доходы: <code>{day_data['income']:.2f}</code> ₽ • "
-                f"Баланс: <code>{balance_sign}{abs(day_balance):.2f}</code> ₽</i>"
+                f"Баланс: <code>{balance_sign}{abs(day_balance):.2f}</code> ₽</i>\n"
             )
             
             # Добавляем транзакции за день
@@ -825,4 +829,228 @@ async def cmd_categories(message: Message):
         "<i>Вы также можете создавать свои категории, просто используя их в транзакциях</i>"
     )
     
-    await message.answer(message_text, parse_mode=ParseMode.HTML) 
+    await message.answer(message_text, parse_mode=ParseMode.HTML)
+
+
+@router.message(Command("advice"))
+async def cmd_advice(message: Message):
+    """
+    Обрабатывает команду /advice
+    Отправляет финансовый совет на основе расходов пользователя
+    """
+    user_id = message.from_user.id
+    
+    # Создаем сессию БД
+    db = SessionLocal()
+    try:
+        # Получаем совет
+        advice = get_advice(user_id, db)
+        
+        # Отправляем совет
+        await message.answer(
+            f"💡 <b>Финансовый совет:</b>\n\n{advice}",
+            parse_mode=ParseMode.HTML
+        )
+        
+    except Exception as e:
+        logging.error(f"Ошибка при обработке команды /advice: {e}")
+        await message.answer("Произошла ошибка при получении совета. Попробуйте позже.")
+    finally:
+        db.close()
+
+
+@router.message(Command("feedback"))
+async def cmd_feedback(message: Message, state: FSMContext):
+    """
+    Обрабатывает команду /feedback
+    Запускает процесс обратной связи по категоризации последней транзакции
+    """
+    user_id = message.from_user.id
+    
+    # Создаем сессию БД
+    db = SessionLocal()
+    try:
+        # Получаем пользователя из БД
+        user = db.query(User).filter(User.telegram_id == user_id).first()
+        
+        if not user:
+            await message.answer("Для начала работы, пожалуйста, используйте команду /start")
+            return
+        
+        # Получаем последнюю транзакцию пользователя
+        last_transaction = db.query(Transaction).filter(
+            Transaction.user_id == user.id
+        ).order_by(Transaction.created_at.desc()).first()
+        
+        if not last_transaction:
+            await message.answer("У вас пока нет транзакций для обратной связи.")
+            return
+        
+        # Получаем текущую категорию
+        current_category = db.query(Category).filter(
+            Category.id == last_transaction.category_id
+        ).first()
+        
+        if not current_category:
+            await message.answer("Не удалось найти категорию последней транзакции.")
+            return
+        
+        # Получаем все категории пользователя
+        user_categories = db.query(Category).filter(
+            Category.user_id == user.id,
+            Category.is_expense == last_transaction.is_expense
+        ).all()
+        
+        # Создаем клавиатуру с категориями
+        keyboard = InlineKeyboardMarkup(row_width=2)
+        buttons = []
+        
+        for category in user_categories:
+            # Помечаем текущую категорию звездочкой
+            label = f"{category.emoji} {category.name.capitalize()}"
+            if category.id == current_category.id:
+                label += " ✓"
+                
+            buttons.append(InlineKeyboardButton(
+                text=label, 
+                callback_data=f"cat_{category.id}"
+            ))
+        
+        keyboard.add(*buttons)
+        
+        # Сохраняем ID транзакции в состоянии
+        await state.update_data(transaction_id=last_transaction.id)
+        
+        # Формируем сообщение
+        message_text = (
+            f"📝 <b>Обратная связь по категоризации</b>\n\n"
+            f"Транзакция: <code>{last_transaction.description}</code>\n"
+            f"Текущая категория: <b>{current_category.emoji} {current_category.name.capitalize()}</b>\n\n"
+            f"Выберите правильную категорию:"
+        )
+        
+        await message.answer(message_text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+        
+        # Устанавливаем состояние ожидания выбора категории
+        await state.set_state(FeedbackStates.waiting_for_category)
+        
+    except Exception as e:
+        logging.error(f"Ошибка при обработке команды /feedback: {e}")
+        await message.answer("Произошла ошибка при запуске обратной связи. Попробуйте позже.")
+    finally:
+        db.close()
+
+
+@router.callback_query(F.data.startswith("cat_"), FeedbackStates.waiting_for_category)
+async def process_category_feedback(callback_query: types.CallbackQuery, state: FSMContext):
+    """
+    Обрабатывает выбор категории в процессе обратной связи
+    """
+    # Получаем ID категории из callback_data
+    category_id = int(callback_query.data.split("_")[1])
+    
+    # Получаем ID транзакции из состояния
+    data = await state.get_data()
+    transaction_id = data.get("transaction_id")
+    
+    if not transaction_id:
+        await callback_query.answer("Ошибка: не найдена информация о транзакции")
+        await state.clear()
+        return
+    
+    # Создаем сессию БД
+    db = SessionLocal()
+    try:
+        # Получаем транзакцию
+        transaction = db.query(Transaction).filter(
+            Transaction.id == transaction_id
+        ).first()
+        
+        if not transaction:
+            await callback_query.answer("Ошибка: транзакция не найдена")
+            await state.clear()
+            return
+        
+        # Получаем новую категорию
+        new_category = db.query(Category).filter(
+            Category.id == category_id
+        ).first()
+        
+        if not new_category:
+            await callback_query.answer("Ошибка: категория не найдена")
+            await state.clear()
+            return
+        
+        # Обновляем категорию транзакции
+        old_category_id = transaction.category_id
+        transaction.category_id = new_category.id
+        
+        # Обновляем также запись в таблице expenses для обратной совместимости
+        if transaction.is_expense == 1:
+            expense = db.query(Expense).filter(
+                Expense.user_id == transaction.user_id,
+                Expense.description == transaction.description,
+                Expense.created_at == transaction.transaction_date
+            ).first()
+            
+            if expense:
+                expense.category = new_category.name
+        
+        # Обновляем кэш категоризации
+        update_category_cache(db, transaction.description, new_category.name)
+        
+        db.commit()
+        
+        # Отправляем подтверждение
+        await callback_query.message.edit_text(
+            f"✅ Категория успешно обновлена на <b>{new_category.emoji} {new_category.name.capitalize()}</b>.\n\n"
+            f"Спасибо за обратную связь! Это поможет улучшить категоризацию в будущем.",
+            parse_mode=ParseMode.HTML
+        )
+        
+        # Очищаем состояние
+        await state.clear()
+        
+    except Exception as e:
+        logging.error(f"Ошибка при обработке обратной связи: {e}")
+        await callback_query.answer("Произошла ошибка при обновлении категории")
+        await state.clear()
+    finally:
+        db.close()
+
+
+@router.message(Command("clearcache"))
+async def clear_category_cache(message: Message):
+    """Очищает кэш категорий для текущего пользователя"""
+    user_id = message.from_user.id
+    
+    try:
+        db = SessionLocal()
+        try:
+            # Получаем пользователя из БД
+            user = db.query(User).filter(User.telegram_id == user_id).first()
+            
+            if not user:
+                await message.answer("Для начала работы, пожалуйста, используйте команду /start")
+                return
+            
+            # Удаляем все записи кэша для данного пользователя
+            cache_entries = db.query(CategoryCache).all()
+            if cache_entries:
+                for entry in cache_entries:
+                    db.delete(entry)
+                db.commit()
+                await message.answer("✅ Кэш категорий успешно очищен")
+            else:
+                await message.answer("Кэш категорий уже пуст")
+                
+        except Exception as e:
+            db.rollback()
+            logging.error(f"Ошибка при очистке кэша категорий: {e}")
+            await message.answer("Произошла ошибка при очистке кэша категорий")
+        finally:
+            db.close()
+            
+    except Exception as e:
+        logging.error(f"Ошибка при обработке команды очистки кэша: {e}")
+        await message.answer("Произошла ошибка при обработке команды") 

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from core.db import Base
@@ -87,4 +87,19 @@ class Transaction(Base):
 
     # Отношения
     user = relationship("User")
-    category = relationship("Category") 
+    category = relationship("Category")
+
+
+class CategoryCache(Base):
+    """Модель кэша для категоризации транзакций с помощью LLM"""
+    __tablename__ = "category_cache"
+
+    id = Column(Integer, primary_key=True, index=True)
+    description_hash = Column(String(64), unique=True, index=True)  # MD5 хеш описания транзакции
+    description = Column(Text, nullable=False)  # Оригинальное описание
+    category_name = Column(String(100), nullable=False)  # Определенная категория
+    confidence = Column(Float, default=1.0)  # Уверенность в категоризации (0-1)
+    created_at = Column(DateTime, default=func.now())
+    last_used_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    use_count = Column(Integer, default=1)  # Счетчик использований
+    is_corrected = Column(Boolean, default=False)  # Флаг ручной корректировки 

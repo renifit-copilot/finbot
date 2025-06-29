@@ -12,11 +12,67 @@ from core.db import SessionLocal
 from core.ocr import parse_receipt
 from core.llm import categorize_transaction
 from typing import Optional, Dict, Any
+from sqlalchemy import desc, func
+from bot.commands import get_main_keyboard  # Импортируем функцию для получения клавиатуры меню
+import locale
+import calendar
 
+# Устанавливаем русскую локаль для корректного отображения дат
+try:
+    locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
+except:
+    try:
+        locale.setlocale(locale.LC_TIME, 'Russian_Russia.1251')
+    except:
+        logging.warning("Не удалось установить русскую локаль")
 
 # Создаем роутер для обработки расходов
 router = Router()
 
+# Русские названия месяцев
+RUSSIAN_MONTHS = {
+    1: 'январь',
+    2: 'февраль',
+    3: 'март',
+    4: 'апрель',
+    5: 'май',
+    6: 'июнь',
+    7: 'июль',
+    8: 'август',
+    9: 'сентябрь',
+    10: 'октябрь',
+    11: 'ноябрь',
+    12: 'декабрь'
+}
+
+# Русские названия дней недели
+RUSSIAN_WEEKDAYS = {
+    0: 'понедельник',
+    1: 'вторник',
+    2: 'среда',
+    3: 'четверг',
+    4: 'пятница',
+    5: 'суббота',
+    6: 'воскресенье'
+}
+
+# Функция для форматирования даты на русском языке
+def format_date_russian(date):
+    """Форматирует дату на русском языке"""
+    try:
+        day = date.day
+        month_num = date.month
+        year = date.year
+        weekday_num = date.weekday()
+        
+        month_name = RUSSIAN_MONTHS[month_num]
+        weekday_name = RUSSIAN_WEEKDAYS[weekday_num]
+        
+        return f"{day} {month_name} {year}, {weekday_name}"
+    except Exception as e:
+        logging.error(f"Ошибка форматирования даты: {e}")
+        # В случае ошибки возвращаем простой формат
+        return date.strftime("%d.%m.%Y")
 
 @router.message(F.text.regexp(r'^-\d+(?:[.,]\d+)?\s+\w+.*$'))
 async def process_expense_message(message: Message):
@@ -198,7 +254,6 @@ import re
 from datetime import datetime, timedelta
 from typing import Tuple, Optional, Dict, List
 import json
-from sqlalchemy import desc, func
 
 
 # Словарь эмодзи для категорий расходов
@@ -648,27 +703,62 @@ async def process_transaction(message: Message):
                 
             db.commit()
             
-            # Форматируем сумму в стиле Cointry
-            formatted_amount = format_amount(transaction_data["amount"], transaction_data["currency"])
+            # Округляем сумму до целого, если она целая
+            amount = transaction_data["amount"]
+            if amount == int(amount):
+                amount = int(amount)
             
             # Определяем тип транзакции
-            transaction_type = "расход" if transaction_data["is_expense"] else "доход"
-            icon = "➖" if transaction_data["is_expense"] else "➕"
+            action_text = "потратил" if transaction_data["is_expense"] else "получил"
             
-            # Формируем дату для отображения
-            date_str = ""
-            if transaction_data["date"].date() != datetime.now().date():
-                date_str = f" ({transaction_data['date'].strftime('%d.%m.%Y')})"
+            # Формируем дату для отображения на русском языке
+            current_date = datetime.now()
+            transaction_date = transaction_data["date"]
+            date_str = format_date_russian(transaction_date)
             
-            # Формируем упоминание пользователя
-            mention_str = ""
-            if transaction_data["mentioned_user"]:
-                mention_str = f" для @{transaction_data['mentioned_user']}"
+            # Получаем имя пользователя для отображения
+            user_display_name = user.first_name or user.username or "Пользователь"
             
-            # Отправляем подтверждение в стиле Cointry
+            # Рассчитываем баланс за текущий месяц
+            month_start = datetime(current_date.year, current_date.month, 1)
+            
+            # Получаем все расходы за месяц
+            month_expenses = db.query(func.sum(Transaction.amount)).filter(
+                Transaction.user_id == user.id,
+                Transaction.is_expense == 1,
+                Transaction.transaction_date >= month_start
+            ).scalar() or 0
+            
+            # Получаем все доходы за месяц
+            month_incomes = db.query(func.sum(Transaction.amount)).filter(
+                Transaction.user_id == user.id,
+                Transaction.is_expense == 0,
+                Transaction.transaction_date >= month_start
+            ).scalar() or 0
+            
+            # Рассчитываем баланс
+            month_balance = month_incomes - month_expenses
+            
+            # Определяем текущий месяц на русском
+            current_month = RUSSIAN_MONTHS[current_date.month]
+            
+            # Определяем индикатор баланса в зависимости от положительный/отрицательный
+            if month_balance < 0:
+                balance_indicator = "❗"
+                balance_text = f"Баланс за {current_month}: (<b>{abs(month_balance)}</b> ₽)"
+            else:
+                balance_indicator = "✅"
+                balance_text = f"Баланс за {current_month}: <b>{month_balance}</b> ₽"
+            
+            # Формируем описание транзакции для отображения
+            transaction_description = description.lower()
+            
+            # Отправляем подтверждение в улучшенном стиле
             await message.answer(
-                f"<b>{category.emoji} {category.name.capitalize()}</b>{date_str}{mention_str}\n"
-                f"{icon} {formatted_amount} {transaction_data['currency']}",
+                f"{user_display_name} {action_text} <b>{amount}</b> RUB на <b>{category.emoji} {category.name.capitalize()}</b>\n"
+                f"{date_str}\n\n"
+                f"{transaction_description}\n\n"
+                f"{balance_indicator} Баланс за {current_month}: <b>{'-' if month_balance < 0 else ''}{abs(month_balance)}</b> ₽",
                 parse_mode=ParseMode.HTML
             )
             

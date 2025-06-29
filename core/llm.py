@@ -268,7 +268,7 @@ def ask_groq(messages: List[Dict[str, str]]) -> str:
             model="llama3-70b-8192",  # Используем Llama 3 70B
             messages=messages,
             temperature=0.7,
-            max_tokens=150,
+            max_tokens=300,
             top_p=0.9
         )
         return response.choices[0].message.content
@@ -320,7 +320,7 @@ def get_advice(user_id: int, db: Session) -> str:
         messages = [
             {
                 "role": "system", 
-                "content": "Ты - финансовый помощник. Дай краткий совет (не более 200 символов) по экономии денег, основываясь на расходах пользователя за месяц."
+                "content": "Ты - финансовый помощник. Дай совет не больше 150 слов по экономии денег, основываясь на расходах пользователя за месяц. Не нужно лить воду, отвечай сухо и по делу и приводи примеры"
             },
             {
                 "role": "user",
@@ -331,10 +331,6 @@ def get_advice(user_id: int, db: Session) -> str:
         # Получаем и возвращаем совет
         advice = ask_groq(messages)
         
-        # Обрезаем совет до 200 символов, если он длиннее
-        if len(advice) > 200:
-            advice = advice[:197] + "..."
-            
         return advice
         
     except Exception as e:
@@ -715,3 +711,159 @@ def get_transaction_suggestions(description: str, db: Session, user_id: int) -> 
             "suggested_tags": [],
             "from_cache": False
         } 
+
+def rebuild_category_cache(db: Session, user_id: int) -> bool:
+    """
+    Перестраивает кэш категорий для стандартных товаров
+
+    Args:
+        db: сессия базы данных
+        user_id: ID пользователя 
+
+    Returns:
+        bool: True в случае успеха, False в случае ошибки
+    """
+    try:
+        # 1. Очищаем существующий кэш категорий
+        db.query(CategoryCache).delete()
+        
+        # 2. Получаем пользователя и его категории
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            logging.error(f"Пользователь с ID {user_id} не найден")
+            return False
+            
+        # 3. Создаем словарь стандартных товаров и их категорий
+        standard_items = {
+            # Продукты и магазины
+            "магнит": "продукты",
+            "пятерочка": "продукты",
+            "перекресток": "продукты",
+            "ашан": "продукты",
+            "лента": "продукты",
+            "дикси": "продукты",
+            "окей": "продукты",
+            "магазин": "продукты",
+            "молоко": "продукты",
+            "хлеб": "продукты",
+            
+            # Кафе
+            "кафе": "еда вне дома",
+            "кофейня": "еда вне дома",
+            "кофе": "еда вне дома",
+            "чай": "еда вне дома",
+            "завтрак": "еда вне дома",
+            "обед": "еда вне дома",
+            "ужин": "еда вне дома",
+            "ресторан": "еда вне дома",
+            "макдоналдс": "еда вне дома",
+            "бургер": "еда вне дома",
+            
+            # Быт
+            "магазин": "быт",
+            "бытовая химия": "быт",
+            "мыло": "быт",
+            "шампунь": "быт",
+            "посуда": "быт",
+            "губки": "быт",
+            "порошок": "быт",
+            
+            # Одежда и обувь
+            "одежда": "одежда и обувь",
+            "брюки": "одежда и обувь",
+            "рубашка": "одежда и обувь",
+            "футболка": "одежда и обувь",
+            "платье": "одежда и обувь",
+            "туфли": "одежда и обувь",
+            "кроссовки": "одежда и обувь",
+            
+            # Здоровье и красота
+            "аптека": "здоровье и красота",
+            "лекарства": "здоровье и красота",
+            "витамины": "здоровье и красота",
+            "косметика": "здоровье и красота",
+            "крем": "здоровье и красота",
+            
+            # Транспорт
+            "метро": "транспорт",
+            "автобус": "транспорт",
+            "такси": "транспорт",
+            "бензин": "транспорт",
+            "парковка": "транспорт",
+            
+            # Связь и интернет
+            "телефон": "связь и интернет",
+            "связь": "связь и интернет",
+            "мтс": "связь и интернет",
+            "мегафон": "связь и интернет",
+            "билайн": "связь и интернет",
+            "теле2": "связь и интернет",
+            "интернет": "связь и интернет",
+            
+            # Жильё и коммунальные услуги
+            "аренда": "жильё и коммунальные услуги",
+            "жкх": "жильё и коммунальные услуги",
+            "квартплата": "жильё и коммунальные услуги",
+            "счет": "жильё и коммунальные услуги",
+            "коммуналка": "жильё и коммунальные услуги",
+            
+            # Развлечения
+            "кино": "развлечения",
+            "театр": "развлечения",
+            "концерт": "развлечения",
+            "музей": "развлечения",
+            "игры": "развлечения",
+            "подписка": "развлечения"
+        }
+        
+        # 4. Добавляем стандартные товары в кэш
+        for description, category_name in standard_items.items():
+            description_hash = hashlib.md5(description.encode()).hexdigest()
+            
+            cache_entry = CategoryCache(
+                description_hash=description_hash,
+                description=description,
+                category_name=category_name.lower(),
+                confidence=1.0,
+                is_corrected=True
+            )
+            db.add(cache_entry)
+        
+        # 5. Добавляем также часто используемые транзакции на основе истории пользователя
+        recent_transactions = db.query(
+            Transaction, Category.name.label('category_name')
+        ).join(
+            Category, Transaction.category_id == Category.id
+        ).filter(
+            Transaction.user_id == user_id
+        ).order_by(Transaction.transaction_date.desc()).limit(30).all()
+        
+        # Добавляем популярные транзакции пользователя в кэш
+        for tx, cat_name in recent_transactions:
+            if tx.description:
+                normalized_description = tx.description.strip().lower()
+                description_hash = hashlib.md5(normalized_description.encode()).hexdigest()
+                
+                # Проверяем, нет ли уже такой записи в кэше
+                existing = db.query(CategoryCache).filter(
+                    CategoryCache.description_hash == description_hash
+                ).first()
+                
+                if not existing:
+                    cache_entry = CategoryCache(
+                        description_hash=description_hash,
+                        description=normalized_description,
+                        category_name=cat_name,
+                        confidence=1.0,
+                        is_corrected=True
+                    )
+                    db.add(cache_entry)
+        
+        db.commit()
+        logging.info(f"Кэш категорий успешно перестроен")
+        return True
+        
+    except Exception as e:
+        db.rollback()
+        logging.error(f"Ошибка при перестройке кэша категорий: {e}")
+        return False 

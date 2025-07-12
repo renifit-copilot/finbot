@@ -8,12 +8,13 @@ class Settings(BaseSettings):
     """Настройки приложения"""
     # Токен Telegram бота
     BOT_TOKEN: str = Field(..., description="Токен Telegram бота")
-    
-    # API ключ для Groq
-    GROQ_API_KEY: str = Field(..., description="API ключ для Groq")
-    
+
+    # API ключ для Cerebras
+    CEREBRAS_API_KEY: str = Field(..., description="API ключ для Cerebras")
+
     # Путь к базе данных
-    DB_PATH: str = Field(default="sqlite:///finbot.db", description="Путь к базе данных SQLite")
+    DB_PATH: str = Field(default="sqlite:///finbot.db",
+                         description="Путь к базе данных SQLite")
 
     class Config:
         env_file = ".env"
@@ -22,4 +23,4 @@ class Settings(BaseSettings):
 
 
 # Создаем экземпляр настроек
-settings = Settings() 
+settings = Settings()

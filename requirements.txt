@@ -8,3 +8,4 @@ python-dotenv==1.0.0
 pillow==10.2.0
 loguru==0.7.2
 pytest==7.4.3 
+cerebras.cloud.sdk 

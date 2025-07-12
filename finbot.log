@@ -4635,3 +4635,841 @@ inline_keyboard
 2025-06-29 11:24:45,060 - aiogram.event - INFO - Update id=602019681 is handled. Duration 172 ms by bot id=8052771853
 2025-06-29 11:25:01,554 - aiogram.dispatcher - INFO - Polling stopped
 2025-06-29 11:25:01,825 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 15:31:58,190 - root - INFO - БД инициализирована успешно
+2025-06-29 15:31:58,509 - root - INFO - Команды бота установлены
+2025-06-29 15:31:58,509 - __main__ - INFO - Запуск бота...
+2025-06-29 15:31:58,510 - aiogram.dispatcher - INFO - Start polling
+2025-06-29 15:31:58,584 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 15:31:58,698 - root - INFO - Создан новый пользователь: 876486659
+2025-06-29 15:31:58,716 - root - INFO - Кэш категорий успешно перестроен
+2025-06-29 15:31:59,075 - aiogram.event - INFO - Update id=602019682 is handled. Duration 391 ms by bot id=8052771853
+2025-06-29 15:32:04,443 - aiogram.event - INFO - Update id=602019683 is handled. Duration 92 ms by bot id=8052771853
+2025-06-29 15:32:10,509 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:10,526 - root - INFO - Категория 'одежда и обувь' для 'шава' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:10,827 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:10,834 - root - INFO - Категория 'одежда и обувь' для 'одежда и обувь' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:10,949 - aiogram.event - INFO - Update id=602019684 is handled. Duration 1233 ms by bot id=8052771853
+2025-06-29 15:32:16,967 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:16,981 - root - INFO - Категория 'еда вне дома' для 'шаверма' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:17,291 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:17,305 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:17,418 - aiogram.event - INFO - Update id=602019685 is handled. Duration 1046 ms by bot id=8052771853
+2025-06-29 15:32:23,834 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:23,842 - root - INFO - Категория 'одежда и обувь' для 'шавуха' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:23,854 - root - INFO - Категория 'одежда и обувь' для 'одежда и обувь' взята из кэша
+2025-06-29 15:32:23,972 - aiogram.event - INFO - Update id=602019686 is handled. Duration 609 ms by bot id=8052771853
+2025-06-29 15:32:41,409 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:41,423 - root - INFO - Категория 'зарплата' для 'доход от бизнеса' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:41,799 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:41,807 - root - INFO - Категория 'зарплата' для 'зарплата' определена с помощью LLM и сохранена в кэш
+2025-06-29 15:32:42,212 - aiogram.event - INFO - Update id=602019687 is handled. Duration 1313 ms by bot id=8052771853
+2025-06-29 15:32:52,038 - root - INFO - Категория 'продукты' для 'спар' определена с помощью словаря товаров
+2025-06-29 15:32:52,043 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-06-29 15:32:52,144 - aiogram.event - INFO - Update id=602019688 is handled. Duration 125 ms by bot id=8052771853
+2025-06-29 15:32:55,642 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 15:32:55,788 - aiogram.event - INFO - Update id=602019689 is handled. Duration 1202 ms by bot id=8052771853
+2025-06-29 15:33:14,712 - aiogram.event - INFO - Update id=602019690 is handled. Duration 375 ms by bot id=8052771853
+2025-06-29 15:33:18,754 - aiogram.event - INFO - Update id=602019691 is handled. Duration 110 ms by bot id=8052771853
+2025-06-29 16:35:40,852 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-06-29 16:35:40,853 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-29 16:35:41,883 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-29 16:35:41,885 - aiogram.dispatcher - WARNING - Sleep for 1.232250 seconds and try again... (tryings = 1, bot id = 8052771853)
+2025-06-29 16:35:43,132 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-06-29 16:35:43,133 - aiogram.dispatcher - WARNING - Sleep for 1.743674 seconds and try again... (tryings = 2, bot id = 8052771853)
+2025-06-29 16:35:55,205 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 8052771853)
+2025-06-29 17:34:24,034 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-29 17:34:24,297 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 18:11:17,578 - root - INFO - БД инициализирована успешно
+2025-06-29 18:11:17,994 - root - INFO - Команды бота установлены
+2025-06-29 18:11:17,995 - __main__ - INFO - Запуск бота...
+2025-06-29 18:11:17,995 - aiogram.dispatcher - INFO - Start polling
+2025-06-29 18:11:18,106 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 18:11:18,664 - aiogram.event - INFO - Update id=602019692 is handled. Duration 452 ms by bot id=8052771853
+2025-06-29 18:11:22,260 - aiogram.event - INFO - Update id=602019693 is handled. Duration 170 ms by bot id=8052771853
+2025-06-29 18:11:26,602 - aiogram.event - INFO - Update id=602019694 is handled. Duration 125 ms by bot id=8052771853
+2025-06-29 18:47:41,436 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-29 18:47:41,689 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 18:53:18,275 - root - INFO - БД инициализирована успешно
+2025-06-29 18:53:18,710 - root - INFO - Команды бота установлены
+2025-06-29 18:53:18,710 - __main__ - INFO - Запуск бота...
+2025-06-29 18:53:18,711 - aiogram.dispatcher - INFO - Start polling
+2025-06-29 18:53:18,838 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 18:53:19,414 - aiogram.event - INFO - Update id=602019696 is handled. Duration 407 ms by bot id=8052771853
+2025-06-29 18:53:19,440 - aiogram.event - INFO - Update id=602019695 is handled. Duration 422 ms by bot id=8052771853
+2025-06-29 18:53:27,081 - aiogram.event - INFO - Update id=602019697 is handled. Duration 108 ms by bot id=8052771853
+2025-06-29 18:53:30,169 - aiogram.event - INFO - Update id=602019698 is handled. Duration 157 ms by bot id=8052771853
+2025-06-29 18:53:41,823 - root - INFO - Категория 'продукты' для 'хуй с солью' определена с помощью словаря товаров
+2025-06-29 18:53:41,834 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-29 18:53:41,961 - aiogram.event - INFO - Update id=602019699 is handled. Duration 157 ms by bot id=8052771853
+2025-06-29 18:53:50,676 - root - INFO - Категория 'одежда и обувь' для 'платье' взята из кэша
+2025-06-29 18:53:50,684 - root - INFO - Категория 'одежда и обувь' для 'одежда и обувь' взята из кэша
+2025-06-29 18:53:50,805 - aiogram.event - INFO - Update id=602019700 is handled. Duration 156 ms by bot id=8052771853
+2025-06-29 19:18:06,838 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2025-06-29 19:18:06,876 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-29 19:18:18,251 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-06-29 20:07:02,397 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-06-29 20:07:02,397 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-29 20:07:13,638 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-06-29 20:19:39,661 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2025-06-29 20:19:39,662 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-29 20:19:51,058 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-06-29 20:27:18,044 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-29 20:27:18,336 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 20:27:24,104 - root - INFO - БД инициализирована успешно
+2025-06-29 20:27:24,320 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001F6A6359DF0>
+2025-06-29 20:27:47,138 - root - INFO - БД инициализирована успешно
+2025-06-29 20:27:47,523 - root - INFO - Команды бота установлены
+2025-06-29 20:27:47,523 - __main__ - INFO - Запуск бота...
+2025-06-29 20:27:47,524 - aiogram.dispatcher - INFO - Start polling
+2025-06-29 20:27:47,599 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-29 20:28:01,686 - aiogram.event - INFO - Update id=602019701 is not handled. Duration 0 ms by bot id=8052771853
+2025-06-29 20:28:05,878 - root - INFO - Создан новый пользователь: 7572158393
+2025-06-29 20:28:05,894 - root - INFO - Кэш категорий успешно перестроен
+2025-06-29 20:28:06,289 - aiogram.event - INFO - Update id=602019702 is handled. Duration 452 ms by bot id=8052771853
+2025-06-29 20:28:09,882 - aiogram.event - INFO - Update id=602019703 is handled. Duration 94 ms by bot id=8052771853
+2025-06-29 20:28:17,833 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 20:28:17,844 - root - INFO - Категория 'другое' для 'ШАВА' определена с помощью LLM и сохранена в кэш
+2025-06-29 20:28:18,346 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 20:28:18,354 - root - INFO - Категория 'другое' для 'другое' определена с помощью LLM и сохранена в кэш
+2025-06-29 20:28:18,483 - aiogram.event - INFO - Update id=602019704 is handled. Duration 1453 ms by bot id=8052771853
+2025-06-29 20:28:38,022 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 20:28:38,036 - root - INFO - Категория 'еда вне дома' для 'шаурма' определена с помощью LLM и сохранена в кэш
+2025-06-29 20:28:38,293 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-29 20:28:38,301 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' определена с помощью LLM и сохранена в кэш
+2025-06-29 20:28:39,738 - aiogram.event - INFO - Update id=602019705 is handled. Duration 2219 ms by bot id=8052771853
+2025-06-29 20:43:44,999 - aiogram.event - INFO - Update id=602019706 is handled. Duration 1172 ms by bot id=8052771853
+2025-06-29 20:43:48,325 - root - INFO - Создан новый пользователь: 876486659
+2025-06-29 20:43:48,337 - root - INFO - Кэш категорий успешно перестроен
+2025-06-29 20:43:48,659 - aiogram.event - INFO - Update id=602019707 is handled. Duration 343 ms by bot id=8052771853
+2025-06-29 22:15:49,554 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-29 22:15:49,815 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-30 19:59:21,883 - root - INFO - БД инициализирована успешно
+2025-06-30 19:59:22,251 - root - INFO - Команды бота установлены
+2025-06-30 19:59:22,251 - __main__ - INFO - Запуск бота...
+2025-06-30 19:59:22,251 - aiogram.dispatcher - INFO - Start polling
+2025-06-30 19:59:22,339 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-30 19:59:22,729 - aiogram.event - INFO - Update id=602019708 is handled. Duration 297 ms by bot id=8052771853
+2025-06-30 19:59:37,346 - aiogram.event - INFO - Update id=602019709 is handled. Duration 250 ms by bot id=8052771853
+2025-06-30 20:01:33,631 - root - INFO - Создан новый пользователь: 1610933390
+2025-06-30 20:01:33,653 - root - INFO - Кэш категорий успешно перестроен
+2025-06-30 20:01:34,127 - aiogram.event - INFO - Update id=602019710 is handled. Duration 514 ms by bot id=8052771853
+2025-06-30 20:01:36,669 - aiogram.event - INFO - Update id=602019711 is handled. Duration 233 ms by bot id=8052771853
+2025-06-30 20:01:43,975 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:01:43,991 - root - INFO - Категория 'другое' для 'леруа' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:01:44,427 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:01:44,436 - root - INFO - Категория 'другое' для 'другое' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:01:44,649 - aiogram.event - INFO - Update id=602019712 is handled. Duration 1282 ms by bot id=8052771853
+2025-06-30 20:01:46,385 - aiogram.event - INFO - Update id=602019713 is not handled. Duration 16 ms by bot id=8052771853
+2025-06-30 20:01:59,978 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:01:59,990 - root - INFO - Категория 'еда вне дома' для 'столовка' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:02:00,232 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:02:00,242 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:02:00,552 - aiogram.event - INFO - Update id=602019714 is handled. Duration 983 ms by bot id=8052771853
+2025-06-30 20:02:10,059 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:02:10,068 - root - INFO - Категория 'быт' для 'леруа мерлен' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:02:10,333 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:02:10,347 - root - INFO - Категория 'быт' для 'быт' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:02:10,491 - aiogram.event - INFO - Update id=602019715 is handled. Duration 875 ms by bot id=8052771853
+2025-06-30 20:02:14,120 - aiogram.event - INFO - Update id=602019716 is not handled. Duration 14 ms by bot id=8052771853
+2025-06-30 20:02:32,813 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:02:32,826 - root - INFO - Категория 'быт' для 'айфон' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:02:32,837 - root - INFO - Категория 'быт' для 'быт' взята из кэша
+2025-06-30 20:02:33,207 - aiogram.event - INFO - Update id=602019717 is handled. Duration 922 ms by bot id=8052771853
+2025-06-30 20:02:43,896 - root - INFO - Категория 'продукты' для 'каша' определена с помощью словаря товаров
+2025-06-30 20:02:43,901 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-06-30 20:02:44,302 - aiogram.event - INFO - Update id=602019718 is handled. Duration 406 ms by bot id=8052771853
+2025-06-30 20:02:47,604 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-30 20:02:47,610 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-06-30 20:02:48,152 - aiogram.event - INFO - Update id=602019719 is handled. Duration 562 ms by bot id=8052771853
+2025-06-30 20:03:06,293 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-30 20:03:06,546 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-30 20:03:11,816 - root - INFO - БД инициализирована успешно
+2025-06-30 20:03:12,197 - root - INFO - Команды бота установлены
+2025-06-30 20:03:12,198 - __main__ - INFO - Запуск бота...
+2025-06-30 20:03:12,198 - aiogram.dispatcher - INFO - Start polling
+2025-06-30 20:03:12,299 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-06-30 20:03:39,778 - root - INFO - Категория 'транспорт' для 'бензин' взята из кэша
+2025-06-30 20:03:40,292 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:03:40,306 - root - INFO - Категория 'транспорт' для 'транспорт' определена с помощью LLM и сохранена в кэш
+2025-06-30 20:03:40,702 - aiogram.event - INFO - Update id=602019720 is handled. Duration 954 ms by bot id=8052771853
+2025-06-30 20:03:58,271 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-30 20:03:58,636 - aiogram.event - INFO - Update id=602019721 is handled. Duration 1750 ms by bot id=8052771853
+2025-06-30 20:04:09,212 - aiogram.event - INFO - Update id=602019722 is handled. Duration 172 ms by bot id=8052771853
+2025-06-30 20:04:36,001 - aiogram.event - INFO - Update id=602019723 is handled. Duration 250 ms by bot id=8052771853
+2025-06-30 20:13:12,893 - aiogram.dispatcher - INFO - Polling stopped
+2025-06-30 20:13:13,009 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 1] [SSL: APPLICATION_DATA_AFTER_CLOSE_NOTIFY] application data after close notify (_ssl.c:2696)
+2025-06-30 20:13:13,010 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-06-30 20:13:13,143 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-04 13:42:56,053 - root - INFO - БД инициализирована успешно
+2025-07-04 13:42:57,891 - root - INFO - Команды бота установлены
+2025-07-04 13:42:57,891 - __main__ - INFO - Запуск бота...
+2025-07-04 13:42:57,892 - aiogram.dispatcher - INFO - Start polling
+2025-07-04 13:42:57,979 - aiogram.dispatcher - INFO - Run polling for bot @ldalfallbot id=7261350398 - 'lfsdl'
+2025-07-04 13:42:58,955 - root - INFO - БД инициализирована успешно
+2025-07-04 13:42:59,202 - root - INFO - Команды бота установлены
+2025-07-04 13:42:59,203 - __main__ - INFO - Запуск бота...
+2025-07-04 13:42:59,203 - aiogram.dispatcher - INFO - Start polling
+2025-07-04 13:42:59,284 - aiogram.dispatcher - INFO - Run polling for bot @ldalfallbot id=7261350398 - 'lfsdl'
+2025-07-04 13:42:59,405 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:42:59,405 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7261350398)
+2025-07-04 13:43:03,503 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:03,503 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7261350398)
+2025-07-04 13:43:04,590 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:04,590 - aiogram.dispatcher - WARNING - Sleep for 1.277772 seconds and try again... (tryings = 1, bot id = 7261350398)
+2025-07-04 13:43:08,960 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:08,960 - aiogram.dispatcher - WARNING - Sleep for 1.499065 seconds and try again... (tryings = 1, bot id = 7261350398)
+2025-07-04 13:43:10,535 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:10,535 - aiogram.dispatcher - WARNING - Sleep for 1.738579 seconds and try again... (tryings = 2, bot id = 7261350398)
+2025-07-04 13:43:15,347 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:15,348 - aiogram.dispatcher - WARNING - Sleep for 1.965271 seconds and try again... (tryings = 2, bot id = 7261350398)
+2025-07-04 13:43:17,043 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 7261350398)
+2025-07-04 13:43:17,438 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-04 13:43:17,440 - root - ERROR - Ошибка при категоризации транзакции: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-04 13:43:17,442 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:17,442 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7261350398)
+2025-07-04 13:43:17,788 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-04 13:43:17,904 - aiogram.event - INFO - Update id=906637594 is handled. Duration 859 ms by bot id=7261350398
+2025-07-04 13:43:21,688 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:21,689 - aiogram.dispatcher - WARNING - Sleep for 2.519906 seconds and try again... (tryings = 3, bot id = 7261350398)
+2025-07-04 13:43:24,289 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:24,290 - aiogram.dispatcher - WARNING - Sleep for 1.335420 seconds and try again... (tryings = 1, bot id = 7261350398)
+2025-07-04 13:43:28,710 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:28,711 - aiogram.dispatcher - WARNING - Sleep for 3.229163 seconds and try again... (tryings = 4, bot id = 7261350398)
+2025-07-04 13:43:31,370 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 7261350398)
+2025-07-04 13:43:31,675 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-04 13:43:31,676 - root - ERROR - Ошибка при запросе к Groq API: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-04 13:43:31,830 - aiogram.event - INFO - Update id=906637595 is handled. Duration 469 ms by bot id=7261350398
+2025-07-04 13:43:32,026 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:32,027 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7261350398)
+2025-07-04 13:43:36,104 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:36,112 - aiogram.dispatcher - WARNING - Sleep for 4.235427 seconds and try again... (tryings = 5, bot id = 7261350398)
+2025-07-04 13:43:36,295 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 7261350398)
+2025-07-04 13:43:36,411 - aiogram.event - INFO - Update id=906637596 is handled. Duration 125 ms by bot id=7261350398
+2025-07-04 13:43:40,429 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:40,429 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7261350398)
+2025-07-04 13:43:44,566 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-04 13:43:44,566 - aiogram.dispatcher - WARNING - Sleep for 4.859372 seconds and try again... (tryings = 6, bot id = 7261350398)
+2025-07-04 13:43:44,961 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-04 13:43:45,234 - aiogram.dispatcher - INFO - Polling stopped for bot @ldalfallbot id=7261350398 - 'lfsdl'
+2025-07-04 13:43:59,520 - aiogram.dispatcher - INFO - Connection established (tryings = 7, bot id = 7261350398)
+2025-07-12 14:49:37,908 - root - INFO - БД инициализирована успешно
+2025-07-12 14:49:38,208 - root - INFO - Команды бота установлены
+2025-07-12 14:49:38,208 - __main__ - INFO - Запуск бота...
+2025-07-12 14:49:38,209 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 14:49:38,413 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:49:43,789 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 14:49:44,051 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:50:14,764 - root - INFO - БД инициализирована успешно
+2025-07-12 14:50:15,005 - root - INFO - Команды бота установлены
+2025-07-12 14:50:15,005 - __main__ - INFO - Запуск бота...
+2025-07-12 14:50:15,006 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 14:50:15,175 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:50:18,207 - aiogram.event - INFO - Update id=602019736 is handled. Duration 453 ms by bot id=8052771853
+2025-07-12 14:50:19,998 - aiogram.event - INFO - Update id=602019737 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:50:22,935 - aiogram.event - INFO - Update id=602019738 is handled. Duration 187 ms by bot id=8052771853
+2025-07-12 14:50:28,269 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 14:50:28,305 - root - INFO - Категория 'еда вне дома' для 'шаурма' определена с помощью LLM и сохранена в кэш
+2025-07-12 14:50:28,313 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 14:50:28,454 - aiogram.event - INFO - Update id=602019739 is handled. Duration 766 ms by bot id=8052771853
+2025-07-12 14:50:34,472 - root - INFO - Категория 'еда вне дома' для 'чай' взята из кэша
+2025-07-12 14:50:34,480 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 14:50:34,688 - aiogram.event - INFO - Update id=602019740 is handled. Duration 218 ms by bot id=8052771853
+2025-07-12 14:50:38,841 - root - INFO - Категория 'продукты' для 'спар' определена с помощью словаря товаров
+2025-07-12 14:50:38,847 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 14:50:38,966 - aiogram.event - INFO - Update id=602019741 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:50:43,790 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 14:50:43,804 - root - INFO - Категория 'еда вне дома' для 'самса' определена с помощью LLM и сохранена в кэш
+2025-07-12 14:50:43,812 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 14:50:44,202 - aiogram.event - INFO - Update id=602019742 is handled. Duration 1125 ms by bot id=8052771853
+2025-07-12 14:50:51,247 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2025-07-12 14:50:51,252 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 14:50:57,742 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-07-12 14:50:57,760 - root - INFO - Категория 'продукты' для 'хлеб' взята из кэша
+2025-07-12 14:50:57,768 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 14:50:58,011 - aiogram.event - INFO - Update id=602019743 is handled. Duration 266 ms by bot id=8052771853
+2025-07-12 14:51:02,016 - root - INFO - Категория 'быт' для 'айфон' взята из кэша
+2025-07-12 14:51:02,023 - root - INFO - Категория 'быт' для 'быт' взята из кэша
+2025-07-12 14:51:02,123 - aiogram.event - INFO - Update id=602019744 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:51:06,142 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-07-12 14:51:06,143 - root - ERROR - Ошибка при запросе к Cerebras API: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> cerebras-sandbox.net</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">95dfa3e1185de490</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">77.222.102.15</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+2025-07-12 14:51:06,261 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 14:51:06,366 - aiogram.event - INFO - Update id=602019745 is handled. Duration 562 ms by bot id=8052771853
+2025-07-12 14:51:11,346 - aiogram.event - INFO - Update id=602019746 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:51:19,678 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-07-12 14:51:19,678 - root - ERROR - Ошибка при запросе к Cerebras API: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> cerebras-sandbox.net</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">95dfa435ad10e954</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">77.222.102.15</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+2025-07-12 14:51:19,794 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 14:51:19,892 - aiogram.event - INFO - Update id=602019747 is handled. Duration 375 ms by bot id=8052771853
+2025-07-12 14:51:26,166 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-07-12 14:51:26,167 - root - ERROR - Ошибка при запросе к Cerebras API: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> cerebras-sandbox.net</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">95dfa45e4c52f10e</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">77.222.102.15</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+2025-07-12 14:51:26,282 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 14:51:26,388 - aiogram.event - INFO - Update id=602019748 is handled. Duration 360 ms by bot id=8052771853
+2025-07-12 14:51:57,153 - root - INFO - Категория 'еда вне дома' для 'чай' взята из кэша
+2025-07-12 14:51:57,158 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 14:51:57,457 - aiogram.event - INFO - Update id=602019749 is handled. Duration 313 ms by bot id=8052771853
+2025-07-12 14:52:14,994 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 14:52:15,250 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:52:20,579 - root - INFO - БД инициализирована успешно
+2025-07-12 14:52:20,803 - root - INFO - Команды бота установлены
+2025-07-12 14:52:20,803 - __main__ - INFO - Запуск бота...
+2025-07-12 14:52:20,804 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 14:52:20,949 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:52:28,051 - root - INFO - Категория 'быт' для 'айфон' взята из кэша
+2025-07-12 14:52:28,055 - root - INFO - Категория 'быт' для 'быт' взята из кэша
+2025-07-12 14:52:28,324 - aiogram.event - INFO - Update id=602019750 is handled. Duration 296 ms by bot id=8052771853
+2025-07-12 14:52:35,974 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-07-12 14:52:35,975 - root - ERROR - Ошибка при запросе к Cerebras API: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> cerebras-sandbox.net</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">95dfa6128f17e31c</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">77.222.102.15</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+2025-07-12 14:52:36,240 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 14:52:36,499 - aiogram.event - INFO - Update id=602019751 is handled. Duration 687 ms by bot id=8052771853
+2025-07-12 14:52:48,571 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-07-12 14:52:48,572 - root - ERROR - Ошибка при запросе к Cerebras API: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> cerebras-sandbox.net</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">95dfa6614927e315</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">77.222.102.15</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+2025-07-12 14:52:48,682 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 14:52:48,803 - aiogram.event - INFO - Update id=602019752 is handled. Duration 389 ms by bot id=8052771853
+2025-07-12 14:53:40,377 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 14:53:40,631 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:53:51,262 - root - INFO - БД инициализирована успешно
+2025-07-12 14:53:51,496 - root - INFO - Команды бота установлены
+2025-07-12 14:53:51,497 - __main__ - INFO - Запуск бота...
+2025-07-12 14:53:51,497 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 14:53:51,640 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 14:53:53,317 - aiogram.event - INFO - Update id=602019753 is handled. Duration 250 ms by bot id=8052771853
+2025-07-12 14:53:56,328 - aiogram.event - INFO - Update id=602019754 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:53:59,838 - aiogram.event - INFO - Update id=602019755 is handled. Duration 156 ms by bot id=8052771853
+2025-07-12 14:54:00,939 - aiogram.event - INFO - Update id=602019756 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 14:54:04,328 - aiogram.event - INFO - Update id=602019757 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 14:54:07,475 - aiogram.event - INFO - Update id=602019758 is handled. Duration 109 ms by bot id=8052771853
+2025-07-12 14:54:19,716 - aiogram.event - INFO - Update id=602019759 is handled. Duration 94 ms by bot id=8052771853
+2025-07-12 14:54:26,303 - aiogram.event - INFO - Update id=602019760 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 14:54:28,636 - aiogram.event - INFO - Update id=602019761 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 14:54:30,621 - aiogram.event - INFO - Update id=602019762 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 14:55:30,977 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2025-07-12 14:55:30,977 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 14:55:42,239 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-07-12 14:57:35,563 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 14:57:35,824 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:09:47,340 - root - INFO - БД инициализирована успешно
+2025-07-12 15:09:47,758 - root - INFO - Команды бота установлены
+2025-07-12 15:09:47,758 - __main__ - INFO - Запуск бота...
+2025-07-12 15:09:47,759 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:09:47,835 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:09:50,333 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:09:50,369 - root - INFO - Категория 'быт' для 'айфон' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:09:50,704 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:09:50,715 - root - INFO - Категория 'быт' для 'быт' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:09:50,986 - aiogram.event - INFO - Update id=602019763 is handled. Duration 1125 ms by bot id=8052771853
+2025-07-12 15:09:55,141 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:09:55,147 - root - INFO - Категория 'другое' для 'T2' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:09:55,609 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:09:55,621 - root - INFO - Категория 'другое' для 'другое' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:09:55,833 - aiogram.event - INFO - Update id=602019764 is handled. Duration 1046 ms by bot id=8052771853
+2025-07-12 15:10:02,531 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:10:02,542 - root - INFO - Категория 'связь и интернет' для 'интерсвязь' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:10:02,861 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:10:02,874 - root - INFO - Категория 'связь и интернет' для 'связь и интернет' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:10:02,980 - aiogram.event - INFO - Update id=602019765 is handled. Duration 953 ms by bot id=8052771853
+2025-07-12 15:10:06,653 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:10:06,665 - root - INFO - Категория 'связь и интернет' для 'tele2' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:10:06,674 - root - INFO - Категория 'связь и интернет' для 'связь и интернет' взята из кэша
+2025-07-12 15:10:06,854 - aiogram.event - INFO - Update id=602019766 is handled. Duration 514 ms by bot id=8052771853
+2025-07-12 15:10:10,920 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:10:10,932 - root - INFO - Категория 'связь и интернет' для 'MTC' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:10:10,940 - root - INFO - Категория 'связь и интернет' для 'связь и интернет' взята из кэша
+2025-07-12 15:10:11,053 - aiogram.event - INFO - Update id=602019767 is handled. Duration 453 ms by bot id=8052771853
+2025-07-12 15:10:16,452 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:10:16,464 - root - INFO - Категория 'другое' для 'хуйло' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:10:16,571 - root - INFO - Категория 'другое' для 'другое' взята из кэша
+2025-07-12 15:10:16,668 - aiogram.event - INFO - Update id=602019768 is handled. Duration 750 ms by bot id=8052771853
+2025-07-12 15:10:24,109 - aiogram.event - INFO - Update id=602019769 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 15:10:30,067 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:10:30,327 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:11:04,977 - root - INFO - БД инициализирована успешно
+2025-07-12 15:11:05,328 - root - INFO - Команды бота установлены
+2025-07-12 15:11:05,329 - __main__ - INFO - Запуск бота...
+2025-07-12 15:11:05,329 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:11:05,405 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:11:11,592 - aiogram.event - INFO - Update id=602019770 is handled. Duration 360 ms by bot id=8052771853
+2025-07-12 15:11:13,619 - root - INFO - Создан новый пользователь: 876486659
+2025-07-12 15:11:13,865 - aiogram.event - INFO - Update id=602019771 is handled. Duration 265 ms by bot id=8052771853
+2025-07-12 15:11:19,720 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:11:19,749 - root - INFO - Категория 'еда вне дома' для 'шаурма' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:11:20,092 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:11:20,104 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:11:20,214 - aiogram.event - INFO - Update id=602019772 is handled. Duration 1031 ms by bot id=8052771853
+2025-07-12 15:11:28,301 - root - INFO - Категория 'еда вне дома' для 'шаурма' взята из кэша
+2025-07-12 15:11:28,307 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 15:11:28,513 - aiogram.event - INFO - Update id=602019773 is handled. Duration 218 ms by bot id=8052771853
+2025-07-12 15:11:45,320 - root - INFO - Категория 'продукты' для 'спар' определена с помощью словаря товаров
+2025-07-12 15:11:45,327 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-07-12 15:11:45,587 - aiogram.event - INFO - Update id=602019774 is handled. Duration 281 ms by bot id=8052771853
+2025-07-12 15:11:49,138 - root - INFO - Категория 'продукты' для 'спар' взята из кэша
+2025-07-12 15:11:49,144 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:11:49,359 - aiogram.event - INFO - Update id=602019775 is handled. Duration 234 ms by bot id=8052771853
+2025-07-12 15:12:01,019 - root - INFO - Категория 'продукты' для 'магнит' определена с помощью словаря товаров
+2025-07-12 15:12:01,027 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:12:01,149 - aiogram.event - INFO - Update id=602019776 is handled. Duration 139 ms by bot id=8052771853
+2025-07-12 15:12:11,039 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:12:11,050 - root - INFO - Категория 'продукты' для 'гранат' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:12:11,059 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:12:11,160 - aiogram.event - INFO - Update id=602019777 is handled. Duration 641 ms by bot id=8052771853
+2025-07-12 15:12:16,420 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:12:16,666 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'

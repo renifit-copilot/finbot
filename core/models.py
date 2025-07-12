@@ -15,7 +15,7 @@ class User(Base):
     first_name = Column(String(100), nullable=True)
     last_name = Column(String(100), nullable=True)
     created_at = Column(DateTime, default=func.now())
-    
+
     # Отношения
     expenses = relationship("Expense", back_populates="user")
     goals = relationship("Goal", back_populates="user")
@@ -30,9 +30,8 @@ class Expense(Base):
     amount = Column(Float, nullable=False)
     category = Column(String(100), nullable=True)
     description = Column(Text, nullable=True)
-    receipt_path = Column(String(255), nullable=True)
     created_at = Column(DateTime, default=func.now())
-    
+
     # Отношения
     user = relationship("User", back_populates="expenses")
 
@@ -48,7 +47,7 @@ class Goal(Base):
     current_amount = Column(Float, default=0.0)
     deadline = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=func.now())
-    
+
     # Отношения
     user = relationship("User", back_populates="goals")
 
@@ -82,8 +81,8 @@ class Transaction(Base):
     transaction_date = Column(DateTime, default=func.now())
     created_at = Column(DateTime, default=func.now())
     is_expense = Column(Integer, default=1)  # 1 - расход, 0 - доход
-    receipt_path = Column(String(255), nullable=True)
-    mentioned_user = Column(String(100), nullable=True)  # Упомянутый пользователь (@username)
+    # Упомянутый пользователь (@username)
+    mentioned_user = Column(String(100), nullable=True)
 
     # Отношения
     user = relationship("User")
@@ -95,11 +94,14 @@ class CategoryCache(Base):
     __tablename__ = "category_cache"
 
     id = Column(Integer, primary_key=True, index=True)
-    description_hash = Column(String(64), unique=True, index=True)  # MD5 хеш описания транзакции
+    # MD5 хеш описания транзакции
+    description_hash = Column(String(64), unique=True, index=True)
     description = Column(Text, nullable=False)  # Оригинальное описание
-    category_name = Column(String(100), nullable=False)  # Определенная категория
-    confidence = Column(Float, default=1.0)  # Уверенность в категоризации (0-1)
+    # Определенная категория
+    category_name = Column(String(100), nullable=False)
+    # Уверенность в категоризации (0-1)
+    confidence = Column(Float, default=1.0)
     created_at = Column(DateTime, default=func.now())
     last_used_at = Column(DateTime, default=func.now(), onupdate=func.now())
     use_count = Column(Integer, default=1)  # Счетчик использований
-    is_corrected = Column(Boolean, default=False)  # Флаг ручной корректировки 
+    is_corrected = Column(Boolean, default=False)  # Флаг ручной корректировки

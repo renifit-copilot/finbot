@@ -5473,3 +5473,318 @@ client_session: <aiohttp.client.ClientSession object at 0x000001F6A6359DF0>
 2025-07-12 15:12:11,160 - aiogram.event - INFO - Update id=602019777 is handled. Duration 641 ms by bot id=8052771853
 2025-07-12 15:12:16,420 - aiogram.dispatcher - INFO - Polling stopped
 2025-07-12 15:12:16,666 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:15:27,566 - root - INFO - БД инициализирована успешно
+2025-07-12 15:15:29,026 - root - INFO - Команды бота установлены
+2025-07-12 15:15:29,026 - __main__ - INFO - Запуск бота...
+2025-07-12 15:15:29,026 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:15:29,099 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:15:35,791 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-12 15:15:35,791 - root - ERROR - Ошибка при запросе к Cerebras API: Error code: 401 - {'message': 'Wrong API Key', 'type': 'invalid_request_error', 'param': 'api_key', 'code': 'wrong_api_key'}
+2025-07-12 15:15:36,380 - httpx - INFO - HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-12 15:15:36,381 - root - ERROR - Ошибка при запросе к Cerebras API: Error code: 401 - {'message': 'Wrong API Key', 'type': 'invalid_request_error', 'param': 'api_key', 'code': 'wrong_api_key'}
+2025-07-12 15:15:36,996 - aiogram.event - INFO - Update id=602019778 is handled. Duration 1687 ms by bot id=8052771853
+2025-07-12 15:17:45,227 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:17:45,480 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:21:09,593 - root - INFO - БД инициализирована успешно
+2025-07-12 15:21:10,025 - root - INFO - Команды бота установлены
+2025-07-12 15:21:10,026 - __main__ - INFO - Запуск бота...
+2025-07-12 15:21:10,026 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:21:10,120 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:21:11,497 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:21:11,754 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:21:52,391 - root - INFO - БД инициализирована успешно
+2025-07-12 15:21:52,785 - root - INFO - Команды бота установлены
+2025-07-12 15:21:52,785 - __main__ - INFO - Запуск бота...
+2025-07-12 15:21:52,786 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:21:52,856 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:21:55,562 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:21:55,826 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:22:02,489 - root - INFO - БД инициализирована успешно
+2025-07-12 15:22:02,833 - root - INFO - Команды бота установлены
+2025-07-12 15:22:02,833 - __main__ - INFO - Запуск бота...
+2025-07-12 15:22:02,833 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:22:02,927 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:22:16,784 - root - ERROR - Ошибка при запросе к LLM API: Completions.create() got an unexpected keyword argument 'headers'
+2025-07-12 15:22:17,177 - root - ERROR - Ошибка при запросе к LLM API: Completions.create() got an unexpected keyword argument 'headers'
+2025-07-12 15:22:17,318 - aiogram.event - INFO - Update id=602019779 is handled. Duration 765 ms by bot id=8052771853
+2025-07-12 15:22:52,284 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:22:52,546 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:23:10,176 - root - INFO - БД инициализирована успешно
+2025-07-12 15:23:10,541 - root - INFO - Команды бота установлены
+2025-07-12 15:23:10,542 - __main__ - INFO - Запуск бота...
+2025-07-12 15:23:10,542 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:23:10,617 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:23:15,371 - root - ERROR - Ошибка при запросе к LLM API: Completions.create() got an unexpected keyword argument 'headers'
+2025-07-12 15:23:15,726 - root - ERROR - Ошибка при запросе к LLM API: Completions.create() got an unexpected keyword argument 'headers'
+2025-07-12 15:23:15,858 - aiogram.event - INFO - Update id=602019780 is handled. Duration 686 ms by bot id=8052771853
+2025-07-12 15:24:13,874 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:24:14,131 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:24:21,756 - root - INFO - БД инициализирована успешно
+2025-07-12 15:24:22,142 - root - INFO - Команды бота установлены
+2025-07-12 15:24:22,142 - __main__ - INFO - Запуск бота...
+2025-07-12 15:24:22,142 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:24:22,212 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:24:36,119 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:24:39,548 - aiogram.event - INFO - Update id=602019781 is not handled. Duration 14546 ms by bot id=8052771853
+2025-07-12 15:24:39,549 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:24:39,550 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:24:40,206 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-8' coro=<Dispatcher._process_update() done, defined at C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\dispatcher.py:296> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "C:\Users\shayn\Documents\finbot\main.py", line 119, in <module>
+    asyncio.run(main())
+  File "C:\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\base_events.py", line 673, in run_until_complete
+    self.run_forever()
+  File "C:\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Python312\Lib\asyncio\base_events.py", line 640, in run_forever
+    self._run_once()
+  File "C:\Python312\Lib\asyncio\base_events.py", line 1992, in _run_once
+    handle._run()
+  File "C:\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\Documents\finbot\bot\expense.py", line 545, in process_transaction
+    llm_category = categorize_transaction(description, db, user.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\Documents\finbot\core\llm.py", line 442, in categorize_transaction
+    try:
+         
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\openai\_utils\_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\openai\resources\chat\completions\completions.py", line 1087, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1256, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 979, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_client.py", line 928, in send
+    raise exc
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_client.py", line 922, in send
+    response.read()
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_client.py", line 153, in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpx\_transports\default.py", line 127, in __iter__
+    for part in self._httpcore_stream:
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\connection_pool.py", line 407, in __iter__
+    raise exc from None
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\connection_pool.py", line 403, in __iter__
+    for part in self._stream:
+                ^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\http11.py", line 342, in __iter__
+    raise exc
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\http11.py", line 334, in __iter__
+    for chunk in self._connection._receive_response_body(**kwargs):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\http11.py", line 203, in _receive_response_body
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shayn\AppData\Roaming\Python\Python312\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\ssl.py", line 1232, in recv
+    return self.read(buflen)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2025-07-12 15:24:44,186 - root - INFO - БД инициализирована успешно
+2025-07-12 15:24:44,540 - root - INFO - Команды бота установлены
+2025-07-12 15:24:44,540 - __main__ - INFO - Запуск бота...
+2025-07-12 15:24:44,540 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:24:44,624 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:24:52,923 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:24:53,887 - root - INFO - Категория 'продукты' для 'салат' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:24:53,894 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-07-12 15:24:54,225 - aiogram.event - INFO - Update id=602019782 is handled. Duration 4046 ms by bot id=8052771853
+2025-07-12 15:25:02,635 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:25:02,896 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:25:09,127 - root - INFO - БД инициализирована успешно
+2025-07-12 15:25:09,480 - root - INFO - Команды бота установлены
+2025-07-12 15:25:09,480 - __main__ - INFO - Запуск бота...
+2025-07-12 15:25:09,481 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:25:09,555 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:25:15,637 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:25:16,943 - root - INFO - Категория 'продукты' для 'цезарь' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:25:16,952 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:25:17,226 - aiogram.event - INFO - Update id=602019783 is handled. Duration 3703 ms by bot id=8052771853
+2025-07-12 15:25:25,255 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2025-07-12 15:25:25,269 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 15:25:36,491 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-07-12 15:25:42,133 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:25:42,943 - root - INFO - Категория 'одежда и обувь' для 'худи' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:25:45,352 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:25:46,059 - root - INFO - Категория 'продукты' для 'одежда и обувь' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:25:46,301 - aiogram.event - INFO - Update id=602019784 is handled. Duration 6718 ms by bot id=8052771853
+2025-07-12 15:25:58,504 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:25:59,341 - root - INFO - Категория 'продукты' для 'футболка' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:25:59,347 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:25:59,473 - aiogram.event - INFO - Update id=602019785 is handled. Duration 3328 ms by bot id=8052771853
+2025-07-12 15:26:07,893 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:26:08,835 - root - INFO - Категория 'продукты' для 'машина' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:26:08,842 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:26:08,943 - aiogram.event - INFO - Update id=602019786 is handled. Duration 3483 ms by bot id=8052771853
+2025-07-12 15:26:12,776 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:26:13,022 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:26:19,112 - root - INFO - БД инициализирована успешно
+2025-07-12 15:26:19,445 - root - INFO - Команды бота установлены
+2025-07-12 15:26:19,446 - __main__ - INFO - Запуск бота...
+2025-07-12 15:26:19,446 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:26:19,519 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:26:19,871 - aiogram.event - INFO - Update id=602019787 is handled. Duration 265 ms by bot id=8052771853
+2025-07-12 15:26:23,449 - aiogram.event - INFO - Update id=602019788 is handled. Duration 93 ms by bot id=8052771853
+2025-07-12 15:26:26,304 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:26:26,564 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:26:41,494 - root - INFO - БД инициализирована успешно
+2025-07-12 15:26:41,844 - root - INFO - Команды бота установлены
+2025-07-12 15:26:41,844 - __main__ - INFO - Запуск бота...
+2025-07-12 15:26:41,845 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:26:41,914 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:26:45,814 - aiogram.event - INFO - Update id=602019789 is handled. Duration 296 ms by bot id=8052771853
+2025-07-12 15:26:48,359 - root - INFO - Создан новый пользователь: 876486659
+2025-07-12 15:26:48,705 - aiogram.event - INFO - Update id=602019790 is handled. Duration 360 ms by bot id=8052771853
+2025-07-12 15:26:52,858 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:26:53,849 - root - INFO - Категория 'продукты' для 'tele2' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:26:53,856 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-07-12 15:26:54,014 - aiogram.event - INFO - Update id=602019791 is handled. Duration 3703 ms by bot id=8052771853
+2025-07-12 15:28:37,214 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:28:37,479 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:28:42,606 - root - INFO - БД инициализирована успешно
+2025-07-12 15:28:42,933 - root - INFO - Команды бота установлены
+2025-07-12 15:28:42,934 - __main__ - INFO - Запуск бота...
+2025-07-12 15:28:42,934 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:28:43,011 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:28:49,438 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:28:49,695 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:28:59,068 - root - INFO - БД инициализирована успешно
+2025-07-12 15:28:59,447 - root - INFO - Команды бота установлены
+2025-07-12 15:28:59,448 - __main__ - INFO - Запуск бота...
+2025-07-12 15:28:59,448 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:28:59,519 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:29:03,949 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:29:04,194 - root - INFO - Категория 'связь и интернет' для 'tele2' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:29:06,836 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:29:07,048 - root - INFO - Категория 'связь и интернет' для 'связь и интернет' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:29:07,392 - aiogram.event - INFO - Update id=602019792 is handled. Duration 7421 ms by bot id=8052771853
+2025-07-12 15:29:16,344 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:29:16,560 - root - INFO - Категория 'еда вне дома' для 'чай' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:29:18,899 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:29:19,069 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:29:19,170 - aiogram.event - INFO - Update id=602019793 is handled. Duration 5125 ms by bot id=8052771853
+2025-07-12 15:29:24,106 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2025-07-12 15:29:24,106 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 15:29:25,120 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2025-07-12 15:29:25,120 - aiogram.dispatcher - WARNING - Sleep for 1.149275 seconds and try again... (tryings = 1, bot id = 8052771853)
+2025-07-12 15:29:34,328 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8052771853)
+2025-07-12 15:29:36,656 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:29:36,865 - root - INFO - Категория 'еда вне дома' для 'цезарь' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:29:36,873 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 15:29:37,203 - aiogram.event - INFO - Update id=602019794 is handled. Duration 2858 ms by bot id=8052771853
+2025-07-12 15:29:43,220 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2025-07-12 15:29:43,249 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 15:29:54,478 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8052771853)
+2025-07-12 15:30:24,738 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2025-07-12 15:30:24,739 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8052771853)
+2025-07-12 15:30:25,753 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Сетевая папка недоступна. За информацией о разрешении проблем в сети обратитесь к справочной системе Windows]
+2025-07-12 15:30:25,753 - aiogram.dispatcher - WARNING - Sleep for 1.146837 seconds and try again... (tryings = 1, bot id = 8052771853)
+2025-07-12 15:30:37,171 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8052771853)
+2025-07-12 15:32:15,231 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:32:15,487 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:32:30,986 - root - INFO - БД инициализирована успешно
+2025-07-12 15:32:31,374 - root - INFO - Команды бота установлены
+2025-07-12 15:32:31,374 - __main__ - INFO - Запуск бота...
+2025-07-12 15:32:31,374 - aiogram.dispatcher - INFO - Start polling
+2025-07-12 15:32:31,448 - aiogram.dispatcher - INFO - Run polling for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'
+2025-07-12 15:32:43,053 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:32:43,494 - root - INFO - Категория 'еда вне дома' для 'доширак' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:32:43,503 - root - INFO - Категория 'еда вне дома' для 'еда вне дома' взята из кэша
+2025-07-12 15:32:43,806 - aiogram.event - INFO - Update id=602019795 is handled. Duration 2843 ms by bot id=8052771853
+2025-07-12 15:32:54,229 - root - INFO - Категория 'продукты' для 'спар' определена с помощью словаря товаров
+2025-07-12 15:32:54,234 - root - INFO - Категория 'продукты' для 'продукты' определена с помощью словаря товаров
+2025-07-12 15:32:54,334 - aiogram.event - INFO - Update id=602019796 is handled. Duration 125 ms by bot id=8052771853
+2025-07-12 15:32:57,545 - root - INFO - Категория 'продукты' для 'магнит' определена с помощью словаря товаров
+2025-07-12 15:32:57,553 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:32:57,686 - aiogram.event - INFO - Update id=602019797 is handled. Duration 139 ms by bot id=8052771853
+2025-07-12 15:33:00,484 - root - INFO - Категория 'продукты' для 'картошка' определена с помощью словаря товаров
+2025-07-12 15:33:00,493 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:33:00,627 - aiogram.event - INFO - Update id=602019798 is handled. Duration 171 ms by bot id=8052771853
+2025-07-12 15:33:13,817 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-12 15:33:14,384 - root - INFO - Категория 'продукты' для 'мороженное из фальги' определена с помощью LLM и сохранена в кэш
+2025-07-12 15:33:14,391 - root - INFO - Категория 'продукты' для 'продукты' взята из кэша
+2025-07-12 15:33:14,495 - aiogram.event - INFO - Update id=602019799 is handled. Duration 4093 ms by bot id=8052771853
+2025-07-12 15:33:25,278 - aiogram.dispatcher - INFO - Polling stopped
+2025-07-12 15:33:25,528 - aiogram.dispatcher - INFO - Polling stopped for bot @finfinance_bot id=8052771853 - 'Finbot - финансовый трекер'

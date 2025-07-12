@@ -9,8 +9,8 @@ class Settings(BaseSettings):
     # Токен Telegram бота
     BOT_TOKEN: str = Field(..., description="Токен Telegram бота")
 
-    # API ключ для Cerebras
-    CEREBRAS_API_KEY: str = Field(..., description="API ключ для Cerebras")
+    # API ключ для OpenRouter
+    OPENROUTER_API_KEY: str = Field(..., description="API ключ для OpenRouter")
 
     # Путь к базе данных
     DB_PATH: str = Field(default="sqlite:///finbot.db",

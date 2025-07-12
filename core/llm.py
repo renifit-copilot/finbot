@@ -1,3 +1,4 @@
+# Импортируем OpenAI
 from openai import OpenAI
 import os
 import logging
@@ -11,18 +12,14 @@ from sqlalchemy import func
 import difflib
 import re
 
-# Условный импорт Cerebras SDK
-try:
-    from cerebras.cloud.sdk import Cerebras
-    # Инициализация клиента Cerebras
-    cerebras_client = Cerebras(
-        api_key=settings.CEREBRAS_API_KEY
-    )
-    CEREBRAS_AVAILABLE = True
-except ImportError:
-    logging.warning(
-        "Cerebras SDK не установлен. Установите с помощью: pip install cerebras.cloud.sdk")
-    CEREBRAS_AVAILABLE = False
+# Инициализация клиента OpenAI с OpenRouter
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=settings.OPENROUTER_API_KEY
+)
+
+# Флаг доступности LLM
+LLM_AVAILABLE = True
 
 # Расширенный словарь товаров с их категориями
 # Структура: {"товар": "категория"}
@@ -85,7 +82,7 @@ PRODUCTS_CATEGORIES = {
     "метро": "продукты",
     "азбука вкуса": "продукты",
     "вкусвилл": "продукты",
-    "спар": "продукты",
+    "sпар": "продукты",
     "spar": "продукты",
     "auchan": "продукты",
     "магнолия": "продукты",
@@ -265,7 +262,7 @@ def match_product_to_category(product_name: str) -> Tuple[str, float]:
 
 def ask_cerebras(messages: List[Dict[str, str]]) -> str:
     """
-    Отправляет запрос к Cerebras API и возвращает ответ
+    Отправляет запрос к LLM API и возвращает ответ
 
     Args:
         messages: список сообщений в формате [{role: "user", content: "текст"}]
@@ -273,21 +270,27 @@ def ask_cerebras(messages: List[Dict[str, str]]) -> str:
     Returns:
         str: ответ от модели
     """
-    if not CEREBRAS_AVAILABLE:
-        logging.error("Cerebras SDK не установлен")
-        return "Не удалось получить совет, Cerebras SDK не установлен."
+    if not LLM_AVAILABLE:
+        logging.error("LLM не установлен")
+        return "Не удалось получить совет, LLM не установлен."
 
     try:
-        response = cerebras_client.chat.completions.create(
-            model="llama-4-scout-17b-16e-instruct",
+        response = client.chat.completions.create(
+            model="mistralai/mistral-7b-instruct:free",
             messages=messages,
             temperature=0.2,
             max_tokens=300,
-            top_p=1
+            top_p=1,
+            extra_headers={
+                # Optional. Site URL for rankings on openrouter.ai
+                "HTTP-Referer": "https://finbot.app",
+                "X-Title": "FinBot",  # Optional. Site title for rankings on openrouter.ai
+            },
+            extra_body={}
         )
         return response.choices[0].message.content
     except Exception as e:
-        logging.error(f"Ошибка при запросе к Cerebras API: {e}")
+        logging.error(f"Ошибка при запросе к LLM API: {e}")
         return "Не удалось получить совет, попробуйте позже."
 
 
@@ -434,19 +437,25 @@ def categorize_transaction(description: str, db: Session, user_id: int) -> Optio
             }
         ]
 
-        # Отправляем запрос к Cerebras LLM
-        if CEREBRAS_AVAILABLE:
+        # Отправляем запрос к LLM
+        if LLM_AVAILABLE:
             try:
-                response = cerebras_client.chat.completions.create(
-                    model="llama-4-scout-17b-16e-instruct",
+                response = client.chat.completions.create(
+                    model="mistralai/mistral-7b-instruct:free",
                     messages=messages,
                     temperature=0.2,
                     max_tokens=50,
-                    top_p=1
+                    top_p=1,
+                    extra_headers={
+                        # Optional. Site URL for rankings on openrouter.ai
+                        "HTTP-Referer": "https://finbot.app",
+                        "X-Title": "FinBot",  # Optional. Site title for rankings on openrouter.ai
+                    },
+                    extra_body={}
                 )
                 category = response.choices[0].message.content.strip().lower()
             except Exception as e:
-                logging.error(f"Ошибка при запросе к Cerebras API: {e}")
+                logging.error(f"Ошибка при запросе к LLM API: {e}")
                 # В случае ошибки используем словарный подход и вероятности
                 category = "другое"
                 confidence = 0.1
@@ -454,7 +463,7 @@ def categorize_transaction(description: str, db: Session, user_id: int) -> Optio
                 return category
         else:
             logging.warning(
-                "Cerebras SDK не установлен, используем словарный метод")
+                "LLM не установлен, используем словарный метод")
             category = "другое"  # Значение по умолчанию, если LLM недоступна
             confidence = 0.1
 

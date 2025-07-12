@@ -12,3 +12,17 @@
 2025-07-12 15:10:57,742 - WARNING - Не удалось сбросить счетчик для таблицы transactions: no such table: sqlite_sequence
 2025-07-12 15:10:57,743 - WARNING - Не удалось сбросить счетчик для таблицы category_cache: no such table: sqlite_sequence
 2025-07-12 15:10:57,748 - INFO - База данных успешно очищена
+2025-07-12 15:26:34,834 - INFO - Создана резервная копия базы данных: finbot.db.backup.20250712_152634
+2025-07-12 15:26:34,836 - INFO - Таблица users очищена
+2025-07-12 15:26:34,837 - INFO - Таблица expenses очищена
+2025-07-12 15:26:34,837 - INFO - Таблица goals очищена
+2025-07-12 15:26:34,838 - INFO - Таблица categories очищена
+2025-07-12 15:26:34,838 - INFO - Таблица transactions очищена
+2025-07-12 15:26:34,838 - INFO - Таблица category_cache очищена
+2025-07-12 15:26:34,839 - WARNING - Не удалось сбросить счетчик для таблицы users: no such table: sqlite_sequence
+2025-07-12 15:26:34,839 - WARNING - Не удалось сбросить счетчик для таблицы expenses: no such table: sqlite_sequence
+2025-07-12 15:26:34,839 - WARNING - Не удалось сбросить счетчик для таблицы goals: no such table: sqlite_sequence
+2025-07-12 15:26:34,840 - WARNING - Не удалось сбросить счетчик для таблицы categories: no such table: sqlite_sequence
+2025-07-12 15:26:34,840 - WARNING - Не удалось сбросить счетчик для таблицы transactions: no such table: sqlite_sequence
+2025-07-12 15:26:34,840 - WARNING - Не удалось сбросить счетчик для таблицы category_cache: no such table: sqlite_sequence
+2025-07-12 15:26:34,844 - INFO - База данных успешно очищена
